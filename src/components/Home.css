@@ -1,0 +1,100 @@
+.home-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #e0f7fa;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  width: 93vw;
+}
+
+.hero-section .cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.introduction-section,
+.tips-section,
+.calculator-intro-section,
+.charts-section,
+.events-section,
+.renewable-energy-section,
+.resources-section {
+  margin-bottom: 20px;
+}
+
+.tips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tip {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 15px;
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.events-section ul,
+.resources-section ul {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  list-style: none;
+  flex-direction: column;
+  padding: 0;
+}
+
+.events-section li,
+.resources-section li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+h2{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #9bb6d3;
+}
