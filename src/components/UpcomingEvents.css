@@ -8,6 +8,13 @@
   .articles-section,
   .blogs-section {
     margin-bottom: 40px;
+    transition: transform 0.3s ease;
+  }
+  .events-section:hover,
+  .videos-section:hover,
+  .articles-section:hover,
+  .blogs-section:hover {
+    transform: translateY(-5px);
   }
   
   .events-section h2,

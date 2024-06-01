@@ -1,14 +1,16 @@
 .weather-widget {
     margin: 20px 0px;
-    background: linear-gradient(to right,rgba(0,0,0,0.3) , rgba(0,0,0,0.5) , rgba(0,0,0,0.7));
-    color: #fff;
+    background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);
+     color: #333;
     padding: 20px;
     border-radius: 8px;
+    transition: transform 0.3s ease;
   }
   
   .weather-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    transform: translateY(-5px);
   }
   

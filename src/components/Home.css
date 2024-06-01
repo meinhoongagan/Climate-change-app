@@ -41,8 +41,8 @@ body {
 
 /* Introduction section styling */
 .introduction-section {
-  background: #ffffff;
-  text-align: center;
+  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);
+   text-align: center;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -63,12 +63,15 @@ body {
 }
 
 /* Renewable energy section styling */
-.renewable-energy-section {
+.renewable-energy-section{
   text-align: center;
-  background: #ffffff;
-  padding: 20px;
+  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);  padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+.renewable-energy-section:hover{
+   transform: translateY(-5px)
 }
 
 /* General section styling */
@@ -76,12 +79,17 @@ body {
 .charts-section,
 .events-section,
 .resources-section {
-  background: #ffffff;
-  padding: 20px;
+  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);  padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease; 
 }
-
+.calculator-intro-section:hover,
+.charts-section:hover,
+.events-section:hover,
+.resources-section:hover {
+  transform: translateY(-5px); 
+}
 .tips {
   display: flex;
   flex-wrap: wrap;
@@ -142,5 +150,5 @@ h2 {
   justify-content: center;
   padding: 10px;
   border-radius: 10px;
-  background: linear-gradient(to right, #f0f0f0, #e0e0e0, #d0d0d0);
+  background: linear-gradient(to right, rgba(92, 92, 92, 0.3), rgba(146, 163, 161, 0.5), rgba(171, 181, 170, 0.7));
 }
