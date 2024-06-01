@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-// import './CarbonFootPrintCalculator.css'
+import './Calculator.css';
+
 const Calculator = () => {
   const [electricity, setElectricity] = useState('');
   const [gas, setGas] = useState('');
   const [miles, setMiles] = useState('');
   const [carbonFootprint, setCarbonFootprint] = useState(null);
+  const [dietPlan, setDietPlan] = useState('');
 
   const calculateFootprint = () => {
     const electricityFootprint = electricity * 0.233; // CO2 per kWh
@@ -13,14 +15,23 @@ const Calculator = () => {
 
     const totalFootprint = electricityFootprint + gasFootprint + milesFootprint;
     setCarbonFootprint(totalFootprint.toFixed(2)); // Round to 2 decimal places
+
+    if (totalFootprint <= 5) {
+      setDietPlan('Your carbon footprint is low! You can continue with your current diet.');
+    } else if (totalFootprint <= 10) {
+      setDietPlan('Consider reducing meat consumption and incorporating more plant-based foods into your diet.');
+    } else {
+      setDietPlan('Your carbon footprint is high. Switching to a primarily plant-based diet can significantly reduce your emissions.');
+    }
   };
 
   return (
     <div className='carbon-container'>
-      <h2>Carbon Footprint Calculator</h2>
+      <h2>Carbon Footprint Calculator (Yearly)</h2>
+      <h4>You will get a Diet suggetion after calculation</h4>
       <form onSubmit={(e) => { e.preventDefault(); calculateFootprint(); }}>
         <div>
-          <label>Electricity Usage (kWh):</label>
+          <label>Electricity Usage (kWh/year):</label>
           <input
             type="number"
             value={electricity}
@@ -29,7 +40,7 @@ const Calculator = () => {
           />
         </div>
         <div>
-          <label>Gas Usage (gallons):</label>
+          <label>Gas Usage (gallons/year):</label>
           <input
             type="number"
             value={gas}
@@ -38,7 +49,7 @@ const Calculator = () => {
           />
         </div>
         <div>
-          <label>Miles Driven:</label>
+          <label>Miles Driven (miles/year):</label>
           <input
             type="number"
             value={miles}
@@ -51,6 +62,7 @@ const Calculator = () => {
       {carbonFootprint !== null && (
         <div>
           <h3>Your Estimated Carbon Footprint: {carbonFootprint} tons CO2/year</h3>
+          <p>{dietPlan}</p>
         </div>
       )}
     </div>

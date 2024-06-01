@@ -1,38 +1,84 @@
-.home-container {
-  padding: 20px;
+/* General body styling */
+body {
+  background: #f9f9f9;
+  color: #333;
   font-family: Arial, sans-serif;
 }
 
+/* Home container styling */
+.home-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Hero section styling */
 .hero-section {
   display: flex;
   flex-direction: column;
-  background-color: #e0f7fa;
+  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);
+  color: #333;
   padding: 40px 20px;
   text-align: center;
   border-radius: 10px;
   margin-bottom: 20px;
-  justify-content: center;
-  width: 93vw;
 }
 
 .hero-section .cta-button {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   text-decoration: none;
 }
 
-.introduction-section,
-.tips-section,
+.hero-section .cta-button:hover {
+  background: #0056b3;
+}
+
+/* Introduction section styling */
+.introduction-section {
+  background: #ffffff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.introduction-section .Intro-head {
+  color: #090909;
+  margin-bottom: 10px;
+}
+
+/* Tips section styling */
+.tips-section {
+  color: #333;
+}
+
+.tips-section h2 {
+  color: #007bff;
+}
+
+/* Renewable energy section styling */
+.renewable-energy-section {
+  text-align: center;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* General section styling */
 .calculator-intro-section,
 .charts-section,
 .events-section,
-.renewable-energy-section,
 .resources-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 
@@ -43,7 +89,7 @@
 }
 
 .tip {
-  background-color: #ffffff;
+  background-color: #f0f0f0;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 15px;
@@ -51,12 +97,16 @@
   margin-bottom: 20px;
 }
 
+/* Chart container styling */
 .chart-container {
   display: flex;
   text-align: center;
   justify-content: center;
+  width: 100%;
+  height: 50vh;
 }
 
+/* Events and resources section styling */
 .events-section ul,
 .resources-section ul {
   display: flex;
@@ -69,10 +119,6 @@
 
 .events-section li,
 .resources-section li {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
   margin-bottom: 10px;
 }
 
@@ -91,10 +137,10 @@
   background-color: #0056b3;
 }
 
-h2{
+h2 {
   display: flex;
   justify-content: center;
   padding: 10px;
   border-radius: 10px;
-  background-color: #9bb6d3;
+  background: linear-gradient(to right, #f0f0f0, #e0e0e0, #d0d0d0);
 }

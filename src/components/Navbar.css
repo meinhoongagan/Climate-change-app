@@ -1,10 +1,14 @@
 /* src/styles/Navbar.css */
 .navbar {
-    background-color: #007bff;
+    background-color: #454f5b;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 50px;
+    position: relative;
   }
   
   .navbar-brand a {
@@ -14,6 +18,11 @@
   }
   
   .navbar-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    position: absolute;
+    left: 700px;
     list-style: none;
     padding: 0;
     margin: 0;

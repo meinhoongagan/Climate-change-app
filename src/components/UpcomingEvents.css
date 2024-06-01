@@ -1,0 +1,61 @@
+.events-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .events-section,
+  .videos-section,
+  .articles-section,
+  .blogs-section {
+    margin-bottom: 40px;
+  }
+  
+  .events-section h2,
+  .videos-section h2,
+  .articles-section h2,
+  .blogs-section h2 {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgba(92, 92, 92, 0.3), rgba(146, 163, 161, 0.5), rgba(171, 181, 170, 0.7));
+  }
+  
+  .events-section ul,
+  .videos-section ul,
+  .articles-section ul,
+  .blogs-section ul {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    list-style: none;
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .events-section li,
+  .videos-section li,
+  .articles-section li,
+  .blogs-section li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .events-section a,
+  .videos-section a,
+  .articles-section a,
+  .blogs-section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .events-section a:hover,
+  .videos-section a:hover,
+  .articles-section a:hover,
+  .blogs-section a:hover {
+    text-decoration: underline;
+  }
+  

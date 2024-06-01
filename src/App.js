@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Tips from './components/Tips';
 import Calculator from './components/Calculator';
 import Resources from './components/Resources';
+import UpcomingEvents from './components/UpcomingEvents';
 import './App.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
   <Route path="/" element={<Home />} />
   <Route path="/tips" element={<Tips />} />
   <Route path="/calculator" element={<Calculator />} />
+  <Route path="/events" element={<UpcomingEvents />} />
   <Route path="/resources" element={<Resources />} />
 </Routes>
       </div>

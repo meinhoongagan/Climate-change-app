@@ -1,0 +1,61 @@
+/* Tips.css */
+.tips-section {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .tips-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .tips-list {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .tip-item {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .detailed-tips-section {
+    padding: 20px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  .detailed-tips-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .detailed-tips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .detailed-tip {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detailed-tip h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .detailed-tip p {
+    font-size: 14px;
+    color: #555;
+  }
+  
