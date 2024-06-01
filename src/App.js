@@ -8,7 +8,12 @@ import Tips from './components/Tips';
 import Calculator from './components/Calculator';
 import Resources from './components/Resources';
 import UpcomingEvents from './components/UpcomingEvents';
+import LoginPage from './components/LoginPage';
+import SignUpPage from './components/SignupPage';
 import './App.css';
+
+
+
 
 const App = () => {
   return (
@@ -22,6 +27,9 @@ const App = () => {
   <Route path="/calculator" element={<Calculator />} />
   <Route path="/events" element={<UpcomingEvents />} />
   <Route path="/resources" element={<Resources />} />
+  <Route path="/login" element={<LoginPage />} />
+  <Route path="/signup" element={<SignUpPage />} />
+
 </Routes>
       </div>
     </Router>
