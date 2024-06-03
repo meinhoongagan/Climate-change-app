@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import NewThread from './NewThread';
 import '../App.css';
 
 const Category = () => {
   const { categoryId } = useParams();
   const [threads, setThreads] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    // Fetch threads for the category
-    const fetchedThreads = [
-      { id: 1, title: 'My Journey to Sustainability' },
-      { id: 2, title: 'How I Reduced My Carbon Footprint' },
-    ];
-    setThreads(fetchedThreads);
+    const storedThreads = JSON.parse(localStorage.getItem(`threads_${categoryId}`)) || [];
+    setThreads(storedThreads);
   }, [categoryId]);
 
   return (
@@ -27,7 +25,10 @@ const Category = () => {
           </Link>
         ))}
       </div>
-      <Link to={`/new-thread?categoryId=${categoryId}`} className="new-thread-button">Create New Thread</Link>
+      <button onClick={() => setShowForm(!showForm)} className="new-thread-button">
+        {showForm ? 'Cancel' : 'Create New Thread'}
+      </button>
+      {showForm && <NewThread setThreads={setThreads} />}
     </div>
   );
 };

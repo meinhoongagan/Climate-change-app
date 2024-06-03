@@ -1,203 +1,83 @@
-/* App.css */
-.App {
+.app-container {
     font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  /* Forum.css */
-  .forum-container {
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .category-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .category-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .category-card {
-    padding: 20px;
-    background: #e3f2fd;
-    border: 1px solid #90caf9;
-    border-radius: 10px;
-    transition: background 0.3s;
-    width: 200px;
-  }
-  
-  .category-card:hover {
-    background: #90caf9;
-  }
-  
-  /* Category.css */
-  .category-container {
     max-width: 800px;
-    margin: 0 auto;
+  }
+  
+  .forum-container,
+  .category-container,
+  .thread-container {
+    background-color: #f9f9f9;
+    border-radius: 5px;
     padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
-  .thread-list {
-    margin-top: 20px;
+  .category-list,
+  .thread-list,
+  .post-list {
+    list-style-type: none;
+    padding: 0;
   }
   
+  .category-card,
+  .thread-card,
+  .post-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-link,
   .thread-link {
     text-decoration: none;
     color: inherit;
   }
   
-  .thread-card {
-    padding: 15px;
-    background: #e8f5e9;
-    border: 1px solid #a5d6a7;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    transition: background 0.3s;
-  }
-  
-  .thread-card:hover {
-    background: #a5d6a7;
-  }
-  
   .new-thread-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #64b5f6;
+    background-color: #007bff;
     color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    margin-top: 20px;
-    transition: background 0.3s;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
   .new-thread-button:hover {
-    background: #42a5f5;
+    background-color: #0056b3;
   }
   
-  /* Thread.css */
-  .thread-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-list {
-    margin-top: 20px;
-  }
-  
-  .post-card {
-    padding: 15px;
-    background: #fff9c4;
-    border: 1px solid #fff176;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .media {
-    margin-top: 10px;
-  }
-  
-  .media img,
-  .media video {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  
-  /* NewThread.css */
-  .new-thread-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    align-self: flex-end;
-    padding: 10px 20px;
-    background: #64b5f6;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  button:hover {
-    background: #42a5f5;
-  }
-  
-  /* PostForm.css */
+  .thread-form,
   .post-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
   }
   
+  .thread-form input,
+  .thread-form textarea,
   .post-form textarea {
+    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    min-height: 100px;
   }
   
-  .post-form input[type="file"] {
-    border: none;
-  }
-  
+  .thread-form button,
   .post-form button {
-    align-self: flex-end;
-    padding: 10px 20px;
-    background: #64b5f6;
+    background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
   }
   
+  .thread-form button:hover,
   .post-form button:hover {
-    background: #42a5f5;
+    background-color: #218838;
   }
   

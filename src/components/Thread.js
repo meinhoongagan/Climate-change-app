@@ -9,16 +9,14 @@ const Thread = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Fetch thread data
-    const fetchedThread = { id: threadId, title: 'My Journey to Sustainability', content: 'This is my story...' };
-    setThread(fetchedThread);
+    // Fetch thread data from local storage
+    const storedThreads = JSON.parse(localStorage.getItem(`threads_${threadId}`)) || [];
+    const currentThread = storedThreads.find(thread => thread.id === parseInt(threadId));
+    setThread(currentThread);
 
-    // Fetch posts in the thread
-    const fetchedPosts = [
-      { id: 1, content: 'Great story! Thanks for sharing.', media: null },
-      { id: 2, content: 'This is very inspiring!', media: null },
-    ];
-    setPosts(fetchedPosts);
+    // Fetch posts in the thread from local storage
+    const storedPosts = JSON.parse(localStorage.getItem(`posts_${threadId}`)) || [];
+    setPosts(storedPosts);
   }, [threadId]);
 
   return (

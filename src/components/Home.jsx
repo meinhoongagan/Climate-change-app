@@ -64,11 +64,11 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
   }, [data]);
 
   const chartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
     datasets: [
       {
-        label: 'Average Carbon Footprint (tons)',
-        data: [2, 1.8, 1.6, 1.5, 1.4, 1.2, 1],
+        label: 'Average Carbon Footprint (tons per capita)',
+        data: [1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8],
         backgroundColor: 'rgba(75,192,192,0.2)',
         borderColor: 'rgba(75,192,192,1)',
         borderWidth: 1,
