@@ -1,6 +1,6 @@
 /* src/styles/Navbar.css */
 .navbar {
-  background-color: #454f5b;
+  background-color: #2e7d32; /* Dark green background representing nature */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -40,19 +40,21 @@
   text-decoration: underline;
 }
 
-.Log-In{
-  color: rgb(255, 255, 255);
+.Log-In {
+  color: white;
   padding: 5px;
   font-weight: bold;
   font-size: large;
   border-radius: 10px;
   width: 100px;
   height: 50px;
-  background-color: rgb(90, 90, 97);
+  background-color: #388e3c; /* Medium green for the login button */
   text-decoration: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.Log-In:hover{
-  color: aquamarine;
-  transform: translateY(-2px)
+
+.Log-In:hover {
+  color: #e0f7fa; /* Light cyan text color on hover */
+  background-color: #2e7d32; /* Darker green background on hover */
+  transform: translateY(-2px);
 }

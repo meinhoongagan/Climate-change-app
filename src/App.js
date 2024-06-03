@@ -10,6 +10,9 @@ import Resources from './components/Resources';
 import UpcomingEvents from './components/UpcomingEvents';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignupPage';
+import Forum from './components/Forum';
+import Thread from './components/Thread';
+import Category from './components/Category';
 import './App.css';
 
 
@@ -29,7 +32,9 @@ const App = () => {
   <Route path="/resources" element={<Resources />} />
   <Route path="/login" element={<LoginPage />} />
   <Route path="/signup" element={<SignUpPage />} />
-
+  <Route exact path="/forum" element={<Forum/>} />
+  <Route path="/category/:categoryId" element={<Category/>} />
+  <Route path="/thread/:threadId" element={<Thread/>} />
 </Routes>
       </div>
     </Router>

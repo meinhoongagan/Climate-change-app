@@ -13,11 +13,13 @@ const Tips = () => {
   return (
     <div className="tips-section">
       <h2 className="tips-title">Tips to Reduce Your Carbon Footprint</h2>
-      <ul className="tips-list">
+      <div className="tips-list">
         {tips.map((tip, index) => (
-          <li key={index} className="tip-item">{tip}</li>
+          <div key={index} className="tip-card">
+            <p className="tip-item">{tip}</p>
+          </div>
         ))}
-      </ul>
+      </div>
       <section className="detailed-tips-section">
         <h2 className="detailed-tips-title">How to Reduce Your Carbon Footprint</h2>
         <div className="detailed-tips">

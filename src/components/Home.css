@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-  background: #f9f9f9;
+  background: #e8f5e9; /* Light green background */
   color: #333;
   font-family: Arial, sans-serif;
 }
@@ -16,8 +16,8 @@ body {
 .hero-section {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);
-  color: #333;
+  background: linear-gradient(to right, #56ab2f, #67b26f); /* Green gradient with a subtle blend */
+  color: white;
   padding: 40px 20px;
   text-align: center;
   border-radius: 10px;
@@ -28,7 +28,7 @@ body {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background: #007bff;
+  background: #ff9800; /* Bright orange for a call-to-action */
   color: white;
   border: none;
   border-radius: 5px;
@@ -36,20 +36,20 @@ body {
 }
 
 .hero-section .cta-button:hover {
-  background: #0056b3;
+  background: #e65100; /* Darker orange on hover */
 }
 
 /* Introduction section styling */
 .introduction-section {
-  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);
-   text-align: center;
+  background: linear-gradient(to right, #f9f9f9, #d4fc79); /* Soft gradient with a hint of green */
+  text-align: center;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
 .introduction-section .Intro-head {
-  color: #090909;
+  color: #2e7d32; /* Dark green for headings */
   margin-bottom: 10px;
 }
 
@@ -63,15 +63,17 @@ body {
 }
 
 /* Renewable energy section styling */
-.renewable-energy-section{
+.renewable-energy-section {
   text-align: center;
-  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);  padding: 20px;
+  background: linear-gradient(to right, #56ab2f, #a8e063); /* Green gradient with a subtle blend */
+  padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
-.renewable-energy-section:hover{
-   transform: translateY(-5px);
+
+.renewable-energy-section:hover {
+  transform: translateY(-5px);
 }
 
 /* General section styling */
@@ -79,17 +81,20 @@ body {
 .charts-section,
 .events-section,
 .resources-section {
-  background: linear-gradient(to right, #f7f7f7, #e3e3e3, #d1d1d1);  padding: 20px;
+  background: linear-gradient(to right, #f9f9f9, #c6e2ff); /* Consistent gradient with a hint of blue */
+  padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
+
 .calculator-intro-section:hover,
 .charts-section:hover,
 .events-section:hover,
 .resources-section:hover {
-  transform: translateY(-5px); 
+  transform: translateY(-5px);
 }
+
 .tips {
   display: flex;
   flex-wrap: wrap;
@@ -97,8 +102,8 @@ body {
 }
 
 .tip {
-  background-color: #f0f0f0;
-  border: 1px solid #e0e0e0;
+  background-color: #e0f7fa; /* Light cyan background for tips */
+  border: 1px solid #b2ebf2; /* Cyan border for tips */
   border-radius: 10px;
   padding: 15px;
   width: 45%;
@@ -134,7 +139,7 @@ body {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ff9800; /* Bright orange for call-to-action buttons */
   color: white;
   border: none;
   border-radius: 5px;
@@ -142,7 +147,7 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+  background-color: #e65100; /* Darker orange on hover */
 }
 
 h2 {
@@ -150,5 +155,5 @@ h2 {
   justify-content: center;
   padding: 10px;
   border-radius: 10px;
-  background: linear-gradient(to right, rgba(92, 92, 92, 0.3), rgba(146, 163, 161, 0.5), rgba(171, 181, 170, 0.7));
+  background: linear-gradient(to right, rgba(34, 193, 195, 0.3), rgba(76, 175, 80, 0.5)); /* Gradient with both green and blue hues */
 }

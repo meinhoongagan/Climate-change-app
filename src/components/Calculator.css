@@ -1,71 +1,84 @@
 /* General container styling */
 .carbon-container {
-    background: #ffffff;
-    color: #333;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    max-width: 500px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header styling */
-  .carbon-container h2,h4  {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 20px;
-  }
-  
-  /* Form styling */
-  .carbon-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .carbon-container form div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .carbon-container form label {
-    font-weight: bold;
-    color: #555;
-  }
-  
-  .carbon-container form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  /* Button styling */
-  .carbon-container form button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .carbon-container form button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Result section styling */
-  .carbon-container h3 {
-    text-align: center;
-    color: #333;
-    margin-top: 20px;
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
+  background: #f7fafc; /* Light blueish background */
+  color: #333;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.carbon-container h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.carbon-container h4 {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.carbon-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.carbon-container form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.carbon-container form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.carbon-container form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Button styling */
+.carbon-container form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.carbon-container form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Result section styling */
+.carbon-container .result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e3f2fd; /* Light blue background */
+  border-radius: 5px;
+  text-align: center;
+}
+
+.carbon-container .result h3 {
+  color: #007bff;
+}
+
+.carbon-container .result p {
+  color: #333;
+}

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './UpcomingEvents.css'
 const UpcomingEvents = () => {
+  useEffect(()=>{
+    AOS.init({
+      duration: 1200, // Animation duration
+    });
+  })
   return (
     <div className="events-container">
-      <section id="events" className="events-section">
+      <section id="events" className="events-section" data-aos="fade-up">
         <h2>Upcoming Climate Events and Policies</h2>
         <ul>
           <li>
@@ -26,7 +33,7 @@ const UpcomingEvents = () => {
           </li>
         </ul>
       </section>
-      <section id="videos" className="videos-section">
+      <section id="videos" className="videos-section" data-aos="fade-up">
         <h2>Educational Videos</h2>
         <ul>
           <li>
@@ -40,7 +47,7 @@ const UpcomingEvents = () => {
           </li>
         </ul>
       </section>
-      <section id="articles" className="articles-section">
+      <section id="articles" className="articles-section" data-aos="fade-left">
         <h2>Informative Articles</h2>
         <ul>
           <li>
@@ -54,7 +61,7 @@ const UpcomingEvents = () => {
           </li>
         </ul>
       </section>
-      <section id="blogs" className="blogs-section">
+      <section id="blogs" className="blogs-section" data-aos="fade-right">
         <h2>Insightful Blogs</h2>
         <ul>
           <li>

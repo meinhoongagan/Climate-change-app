@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import './Home.css';
@@ -48,6 +50,9 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
   const [parsedData, setParsedData] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1200, // Animation duration
+    });
     const parsed = data.split('\n\n').map(section => {
       const lines = section.split('\n');
       return {
@@ -72,13 +77,13 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container" data-aos="fade-up">
       <header className="hero-section">
         <h1>Welcome to Climate Action Platform</h1>
         <p>Take action to reduce your carbon footprint and combat climate change.</p>
         <Link to="/calculator" className="cta-button">Calculate Your Carbon Footprint</Link>
       </header>
-      <section className="introduction-section">
+      <section className="introduction-section" data-aos="fade-up">
         <h2>Understanding Climate Change</h2>
         {parsedData.map((section, index) => (
           <div key={index}>
@@ -88,14 +93,12 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
         ))}
       </section>
       <WeatherWidget />
-      
-     
-      <section className="calculator-intro-section">
+      <section className="calculator-intro-section" data-aos="fade-right">
         <h2>Carbon Footprint Calculator</h2>
         <p>Use our calculator to estimate your carbon footprint and find ways to reduce it.</p>
         <Link to="/calculator" className="cta-button">Go to Calculator</Link>
       </section>
-      <section className="charts-section">
+      <section className="charts-section" data-aos="fade-left">
         <h2>Your Impact</h2>
         <div className="chart-container">
           <Line 
@@ -111,7 +114,7 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
           />
         </div>
       </section>
-      <section className="events-section">
+      <section className="events-section" data-aos="fade-down">
         <h2>Upcoming Climate Events and Policies</h2>
         <ul>
           <li>
@@ -122,12 +125,12 @@ Human Health: Increased heat and pollution can exacerbate respiratory and cardio
           </li>
         </ul>
       </section>
-      <section className="renewable-energy-section">
+      <section className="renewable-energy-section" data-aos="fade-up">
         <h2>Renewable Energy Resources</h2>
         <p>Switching to renewable energy sources like solar, wind, and hydro can significantly reduce your carbon footprint.</p>
         <Link to="/resources" className="cta-button">Learn More</Link>
       </section>
-      <section className="resources-section">
+      <section className="resources-section" data-aos="fade-up">
         <h2>Additional Resources</h2>
         <ul>
           <li><a href="https://www.carbonfootprint.com/" target="_blank" rel="noopener noreferrer">Carbon Footprint Calculator</a></li>
