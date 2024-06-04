@@ -13,10 +13,10 @@ import SignUpPage from './components/SignupPage';
 import Forum from './components/Forum';
 import Thread from './components/Thread';
 import Category from './components/Category';
+import Subscribe from './components/Subscribe';
+import Dashboard from './components/Dashboard';
+import EcoCart from './components/EcoCart';
 import './App.css';
-
-
-
 
 const App = () => {
   return (
@@ -35,6 +35,9 @@ const App = () => {
   <Route exact path="/forum" element={<Forum/>} />
   <Route path="/category/:categoryId" element={<Category/>} />
   <Route path="/thread/:threadId" element={<Thread/>} />
+  <Route path="/subscribe" element={<Subscribe/>} />
+   <Route path="/dashboard" element={<Dashboard/>} />
+   <Route path="/cart" element={<EcoCart/>} />
 </Routes>
       </div>
     </Router>
