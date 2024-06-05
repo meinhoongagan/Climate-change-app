@@ -40,7 +40,7 @@
   text-decoration: underline;
 }
 
-.Log-In {
+.Log-In{
   color: white;
   padding: 5px;
   font-weight: bold;
@@ -48,14 +48,14 @@
   border-radius: 10px;
   width: 100px;
   height: 50px;
-  background-color: #388e3c; /* Medium green for the login button */
+  background-color: #b1cab3; 
   text-decoration: none;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .Log-In:hover {
   color: #e0f7fa; /* Light cyan text color on hover */
-  background-color: #2e7d32; /* Darker green background on hover */
+  background-color: #08f914; /* Darker green background on hover */
   transform: translateY(-2px);
 }
 .navbar {
