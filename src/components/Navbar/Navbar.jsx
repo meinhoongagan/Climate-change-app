@@ -17,7 +17,6 @@ const Navbar = () => {
         <li><Link to="/calculator">Calculator</Link></li>
         <li><Link to="/events">Upcoming Events</Link></li>
         <li><Link to="/resources">Resources</Link></li>
-        <li><Link to="/forum">Forum</Link></li>
         <li><Link to="/cart">Eco Basket</Link></li>
       </ul>
       <div className="navbar-menu">
