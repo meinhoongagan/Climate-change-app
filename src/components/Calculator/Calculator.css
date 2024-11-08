@@ -1,84 +1,123 @@
 /* General container styling */
 .carbon-container {
-  background: #f7fafc; /* Light blueish background */
+  background: #f0f4f8; /* Softer light blue background */
   color: #333;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 500px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin: 30px auto;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   font-family: Arial, sans-serif;
 }
 
 /* Header styling */
 .carbon-container h2 {
   text-align: center;
-  color: #007bff;
-  margin-bottom: 10px;
+  color: #0056b3; /* Darker blue for better contrast */
+  margin-bottom: 12px;
 }
 
 .carbon-container h4 {
   text-align: center;
-  color: #555;
-  margin-bottom: 20px;
+  color: #666;
+  margin-bottom: 24px;
+  font-weight: 400;
 }
 
 /* Form styling */
 .carbon-container form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
 .carbon-container form div {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .carbon-container form label {
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
+  font-size: 15px;
 }
 
-.carbon-container form input {
+.carbon-container form input,
+.carbon-container form select {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
   color: #333;
+  background-color: #fff;
+}
+
+.carbon-container form input:focus,
+.carbon-container form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.carbon-container form input[type="checkbox"] {
+  width: auto;
+  margin-top: 6px;
 }
 
 /* Button styling */
 .carbon-container form button {
-  padding: 10px 20px;
+  padding: 12px 0;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .carbon-container form button:hover {
   background-color: #0056b3;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
-/* Result section styling */
+.carbon-container form button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* Response message styling */
+.carbon-container .response-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e0f2ff; /* Lighter blue for a subtle response area */
+  border-radius: 6px;
+  text-align: center;
+}
+
+.carbon-container .response-message p {
+  color: #333;
+  font-size: 15px;
+}
+
+/* Result section styling (if you choose to show a result after submission) */
 .carbon-container .result {
   margin-top: 20px;
   padding: 15px;
-  background: #e3f2fd; /* Light blue background */
-  border-radius: 5px;
+  background: #e0f2ff;
+  border-radius: 6px;
   text-align: center;
 }
 
 .carbon-container .result h3 {
   color: #007bff;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .carbon-container .result p {
   color: #333;
+  font-size: 15px;
 }
+
