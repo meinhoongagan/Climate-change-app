@@ -92,9 +92,9 @@ const Calculator = () => {
 
   return (
     <div className="form-container">
-      <h2 className="form-title">Carbon Footprint Calculator</h2>
       <form onSubmit={handleSubmit} className="form">
         {/* Transportation */}
+      <h2 className="form-title">Carbon Footprint Calculator</h2>
         <div className="form-section">
           <h3 className="form-subtitle">Transportation</h3>
           <label htmlFor="mode" className="form-label">Mode</label>
