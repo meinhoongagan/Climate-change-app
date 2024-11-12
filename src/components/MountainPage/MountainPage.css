@@ -1,0 +1,16 @@
+/* Container styles */
+.mountain-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70vw;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    gap: 50px;
+  }
+  
+  /* Chart container styles */
+  .chart-container {
+    max-width: 400px;
+    max-height: 400px;
+  }
