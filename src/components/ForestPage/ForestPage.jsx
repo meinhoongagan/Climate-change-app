@@ -199,9 +199,9 @@ const ForestPage = () => {
       ctx.fillStyle = 'rgba(0, 255, 0, 0.1)';
       ctx.fillRect(left, y.getPixelForValue(0), right - left, y.getPixelForValue(2) - y.getPixelForValue(0));
       ctx.fillStyle = 'rgba(255, 255, 0, 0.1)';
-      ctx.fillRect(left, y.getPixelForValue(2), right - left, y.getPixelForValue(3) - y.getPixelForValue(2));
+      ctx.fillRect(left, y.getPixelForValue(2), right - left, y.getPixelForValue(5) - y.getPixelForValue(2));
       ctx.fillStyle = 'rgba(255, 0, 0, 0.1)';
-      ctx.fillRect(left, y.getPixelForValue(3), right - left, y.getPixelForValue(10) - y.getPixelForValue(3));
+      ctx.fillRect(left, y.getPixelForValue(5), right - left, y.getPixelForValue(10) - y.getPixelForValue(5));
     },
   };
 
