@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import './Home.css';
-import WeatherWidget from './WeatherWidget';
+import WeatherWidget from '../WeatherWidget/WeatherWidget';
 import {
   Chart as ChartJS,
   LineElement,
