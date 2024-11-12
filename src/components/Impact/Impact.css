@@ -1,23 +1,5 @@
 .impact-container {
-    max-width: 400px;
-  }
-  
-  .impact-text {
-    color: #4B5563; /* equivalent to text-gray-600 */
-    font-size: 2.25rem; /* equivalent to text-4xl */
-    line-height: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Add responsive styling */
-  @media (max-width: 640px) {
-    .impact-container {
-      max-width: 100%;
-      padding: 0 1rem;
-    }
-    
-    .impact-text {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-    }
-  }
+  width: 400px;
+  color: gray;
+  font-size:x-large;
+}

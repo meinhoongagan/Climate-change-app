@@ -11,9 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import './MountainPage.css';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,7 +28,6 @@ const MountainPage = () => {
   const uv = useSelector((state) => state.simulator.uv_radiation);
   const hum = useSelector((state) => state.simulator.humidity);
 
-  // Temperature Chart Configuration
   const data = {
     labels: ['Current Temp'],
     datasets: [{
@@ -44,17 +41,13 @@ const MountainPage = () => {
     responsive: true,
     scales: {
       y: {
-        ticks: {
-          stepSize: 5,
-        },
+        ticks: { stepSize: 5 },
         suggestedMin: -10,
         suggestedMax: 30,
       },
       x: {
         ticks: {
-          font: {
-            size: 16,
-          },
+          font: { size: 16 },
         },
       },
     },
@@ -79,7 +72,6 @@ const MountainPage = () => {
     },
   };
 
-  // AQI Chart Configuration
   const data2 = {
     labels: ['Current AQI'],
     datasets: [{
@@ -93,17 +85,13 @@ const MountainPage = () => {
     responsive: true,
     scales: {
       y: {
-        ticks: {
-          stepSize: 50,
-        },
+        ticks: { stepSize: 50 },
         suggestedMin: 0,
         suggestedMax: 300,
       },
       x: {
         ticks: {
-          font: {
-            size: 16,
-          },
+          font: { size: 16 },
         },
       },
     },
@@ -128,7 +116,6 @@ const MountainPage = () => {
     },
   };
 
-  // Wind Speed Chart Configuration
   const data3 = {
     labels: ['Current Wind Speed'],
     datasets: [{
@@ -142,17 +129,13 @@ const MountainPage = () => {
     responsive: true,
     scales: {
       y: {
-        ticks: {
-          stepSize: 10,
-        },
+        ticks: { stepSize: 10 },
         suggestedMin: 0,
         suggestedMax: 100,
       },
       x: {
         ticks: {
-          font: {
-            size: 16,
-          },
+          font: { size: 16 },
         },
       },
     },
@@ -177,7 +160,6 @@ const MountainPage = () => {
     },
   };
 
-  // UV Radiation Chart Configuration
   const data4 = {
     labels: ['Current UV Radiation'],
     datasets: [{
@@ -191,17 +173,13 @@ const MountainPage = () => {
     responsive: true,
     scales: {
       y: {
-        ticks: {
-          stepSize: 1,
-        },
+        ticks: { stepSize: 1 },
         suggestedMin: 0,
         suggestedMax: 10,
       },
       x: {
         ticks: {
-          font: {
-            size: 16,
-          },
+          font: { size: 16 },
         },
       },
     },
@@ -226,7 +204,6 @@ const MountainPage = () => {
     },
   };
 
-  // Humidity Chart Configuration
   const data5 = {
     labels: ['Current Humidity'],
     datasets: [{
@@ -240,17 +217,13 @@ const MountainPage = () => {
     responsive: true,
     scales: {
       y: {
-        ticks: {
-          stepSize: 10,
-        },
+        ticks: { stepSize: 10 },
         suggestedMin: 0,
         suggestedMax: 100,
       },
       x: {
         ticks: {
-          font: {
-            size: 16,
-          },
+          font: { size: 16 },
         },
       },
     },
@@ -278,59 +251,59 @@ const MountainPage = () => {
   };
 
   return (
-    <div className="mountain-page-container">
-      <Bar data={data} options={options} className="chart-container" plugins={[plugin]}/>
+    <div className='container'>
+      <Bar data={data} options={options} className='chart' plugins={[plugin]}/>
       <Impact 
         para={temp} 
-        min='-5' 
-        mid='15' 
-        max='25' 
+        min={-5} 
+        mid={15} 
+        max={25} 
         minImpact='Supports seasonal plant growth and animal adaptation; varies by altitude.' 
         midImpact='Warmer conditions may cause snowmelt and stress some wildlife adapted to colder temperatures.' 
         maxImpact='Accelerated melting of glaciers and snow; can lead to water scarcity, plant desiccation, and heat stress in lower-altitude fauna.'
       />
-
-      <Bar data={data2} options={options2} className="chart-container" plugins={[plugin2]}/>
+      
+      <Bar data={data2} options={options2} className='chart' plugins={[plugin2]}/>
       <Impact 
         para={aqi} 
-        min='0' 
-        mid='50' 
-        max='100' 
+        min={0} 
+        mid={50} 
+        max={100} 
         minImpact='High-altitude air is typically clean, supporting healthy flora and fauna.' 
         midImpact='Possible impacts from urban pollution or wildfire smoke; may cause mild stress to sensitive species.' 
         maxImpact='Rare but can occur due to transported pollutants; impacts breathing and overall health of both animals and humans.'
       />
-
-      <Bar data={data3} options={options3} className="chart-container" plugins={[plugin3]}/>
+      
+      <Bar data={data3} options={options3} className='chart' plugins={[plugin3]}/>
       <Impact 
         para={wind} 
-        min='5' 
-        mid='20' 
-        max='50' 
+        min={5} 
+        mid={20} 
+        max={50} 
         minImpact='Helps with seed dispersal and air circulation; common on mountain slopes.' 
         midImpact='Stronger winds may disrupt animal habitats and make movement difficult for wildlife.' 
         maxImpact='Severe weather risk, potential for habitat damage, and difficult navigation for wildlife and humans.'
       />
-
-      <Bar data={data4} options={options4} className="chart-container" plugins={[plugin4]}/>
+      
+      <Bar data={data4} options={options4} className='chart' plugins={[plugin4]}/>
       <Impact 
         para={uv} 
-        min='0' 
-        mid='3' 
-        max='6' 
+        min={0} 
+        mid={3} 
+        max={6} 
         minImpact='Low risk; common during early mornings or winter.' 
         midImpact='Increased UV exposure at higher altitudes; may cause stress to plants and animals.' 
         maxImpact='Significant UV exposure; risk of damage to plant tissues and health issues for animals due to reflection from snow.'
       />
-
-      <Bar data={data5} options={options5} className="chart-container" plugins={[plugin5]}/>
+      
+      <Bar data={data5} options={options5} className='chart' plugins={[plugin5]}/>
       <Impact 
         para={hum} 
-        min='50' 
-        mid='30' 
-        mid2='70' 
-        max='0' 
-        max2='85' 
+        min={50} 
+        mid={30} 
+        mid2={70} 
+        max={0} 
+        max2={85} 
         minImpact='Ideal for mountain flora and fauna; supports balanced ecosystem functions.' 
         midImpact='Can lead to drier conditions that affect vegetation or excessive moisture that promotes rapid snowmelt and heavy rainfall.' 
         maxImpact='Dry conditions increase the risk of wildfires; high moisture can cause fog, heavy precipitation, or snow, affecting visibility and movement.'

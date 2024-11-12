@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setTemperature, setAqi, setWindSpeed, setUvRadiation, setHumidity, setEcosystem } from '../../redux/simulatorSlice';
-import '../Parameter/Parameter.css';
+import './Parameter.css'
 
 const Parameter = () => {
     const dispatch = useDispatch();
@@ -38,19 +38,17 @@ const Parameter = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    
         dispatch(setEcosystem(ecosystem));  
         dispatch(setTemperature(temperature));
         dispatch(setAqi(aqi));
         dispatch(setWindSpeed(wind_speed));
         dispatch(setUvRadiation(uv_radiation));
         dispatch(setHumidity(humidity));
-
-        navigate(`/${ecosystem}`);
+        navigate(`/simulator/${ecosystem}`);
     };
 
     return (
-        <div>
+        <div className="parameter-container">
             <header className="header">
                 <h1 className="title">Climate Change Impact Simulator</h1>
             </header>
@@ -59,11 +57,7 @@ const Parameter = () => {
                 <form className="parameter-form" onSubmit={handleSubmit}>
                     <div className="ecosystem-section">
                         <label htmlFor="ecosystem" className="ecosystem-label">Type of Ecosystem</label>
-                        <select 
-                            id="ecosystem" 
-                            className="ecosystem-select"
-                            onChange={handleInputChange1}
-                        >
+                        <select id="ecosystem" className="ecosystem-select" onChange={handleInputChange1}>
                             <option value="urban">Urban</option>
                             <option value="forest">Forest</option>
                             <option value="desert">Desert</option>
@@ -72,67 +66,67 @@ const Parameter = () => {
                     </div>
 
                     <div className="parameters-grid">
-                        <div className="input-group">
-                            <label htmlFor="temperature" className="input-label">Temperature (°C)</label>
+                        <div className="parameter-field">
+                            <label htmlFor="temperature" className="parameter-label">Temperature (°C)</label>
                             <input 
                                 type="text" 
                                 id="temperature" 
                                 placeholder="e.g., 25" 
-                                className="input-field"
+                                className="parameter-input"
                                 onChange={handleInputChange2}
-                                value={temperature}
+                                value={temperature} 
                                 required
                             />
                         </div>
                         
-                        <div className="input-group">
-                            <label htmlFor="aqi" className="input-label">AQI</label>
+                        <div className="parameter-field">
+                            <label htmlFor="aqi" className="parameter-label">AQI</label>
                             <input 
                                 type="text" 
                                 id="aqi" 
                                 placeholder="e.g., 50" 
-                                className="input-field"
+                                className="parameter-input"
                                 onChange={handleInputChange3}
-                                value={aqi}
+                                value={aqi} 
                                 required
                             />
                         </div>
 
-                        <div className="input-group">
-                            <label htmlFor="wind-speed" className="input-label">Wind Speed (km/h)</label>
+                        <div className="parameter-field">
+                            <label htmlFor="wind-speed" className="parameter-label">Wind Speed (km/h)</label>
                             <input 
                                 type="text" 
                                 id="wind-speed" 
                                 placeholder="e.g., 15" 
-                                className="input-field"
+                                className="parameter-input"
                                 onChange={handleInputChange4}
-                                value={wind_speed}
+                                value={wind_speed} 
                                 required
                             />
                         </div>
 
-                        <div className="input-group">
-                            <label htmlFor="uv-rays" className="input-label">UV Rays</label>
+                        <div className="parameter-field">
+                            <label htmlFor="uv-rays" className="parameter-label">UV Rays</label>
                             <input 
                                 type="text" 
                                 id="uv-rays" 
                                 placeholder="e.g., 3" 
-                                className="input-field"
+                                className="parameter-input"
                                 onChange={handleInputChange5}
-                                value={uv_radiation}
+                                value={uv_radiation} 
                                 required
                             />
                         </div>
 
-                        <div className="input-group">
-                            <label htmlFor="humidity" className="input-label">Humidity (%)</label>
+                        <div className="parameter-field">
+                            <label htmlFor="humidity" className="parameter-label">Humidity (%)</label>
                             <input 
                                 type="text" 
                                 id="humidity" 
                                 placeholder="e.g., 60" 
-                                className="input-field"
+                                className="parameter-input"
                                 onChange={handleInputChange6}
-                                value={humidity}
+                                value={humidity} 
                                 required
                             />
                         </div>

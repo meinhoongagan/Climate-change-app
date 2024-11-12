@@ -1,8 +1,7 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home';
-
 import Navbar from './components/Navbar/Navbar';
 import Tips from './components/Tips/Tips';
 import Calculator from './components/Calculator/Calculator';
@@ -14,13 +13,21 @@ import Subscribe from './components/Subscribe/Subscribe';
 import Dashboard from './components/Dashboard/Dashboard';
 import EcoCart from './components/EcoCart/EcoCart';
 import './App.css';
+import UrbanPage from './components/UrbanPage/UrbanPage';
+import MountainPage from './components/MountainPage/MountainPage';
+import DesertPage from './components/DesertPage/DesertPage';
+import ForestPage from './components/ForestPage/ForestPage';
+import Parameter from './components/Parameter/Parameter';
 
 const SimulatorLayout = () => {
   return (
     <div className="main">
       <Parameter />
       <Routes>
+        {/* Default route for /simulator */}
         <Route index element={<UrbanPage />} />
+        
+        {/* Nested routes */}
         <Route path="urban" element={<UrbanPage />} />
         <Route path="forest" element={<ForestPage />} />
         <Route path="desert" element={<DesertPage />} />
@@ -34,23 +41,23 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-          <Navbar />
-         
-          <Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="/tips" element={<Tips />} />
-  <Route path="/calculator" element={<Calculator />} />
-  <Route path="/events" element={<UpcomingEvents />} />
-  <Route path="/resources" element={<Resources />} />
-  <Route path="/login" element={<LoginPage />} />
-  <Route path="/signup" element={<SignUpPage />} />
-  <Route path="/subscribe" element={<Subscribe/>} />
-   <Route path="/dashboard" element={<Dashboard/>} />
-   <Route path="/cart" element={<EcoCart/>} />
-</Routes>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tips" element={<Tips />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/events" element={<UpcomingEvents />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/cart" element={<EcoCart />} />
+          <Route path="/simulator/*" element={<SimulatorLayout />} />
+        </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;

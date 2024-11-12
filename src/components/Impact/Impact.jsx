@@ -1,48 +1,28 @@
 import React from 'react';
-import './Impact.css';
+import './Impact.css'
 
-const Impact = ({ 
-  para, 
-  min, 
-  mid, 
-  mid2, 
-  max, 
-  max2, 
-  minImpact, 
-  midImpact, 
-  maxImpact 
-}) => {
-  const hasExtendedRanges = mid2 !== '' && max2 !== '';
-
-  if (hasExtendedRanges) {
-    return (
-      <div className="impact-container">
-        {(para > min && para <= mid) && (
-          <div className="impact-text">{minImpact}</div>
-        )}
-        {(para > mid && para <= max) && (
-          <div className="impact-text">{midImpact}</div>
-        )}
-        {para > max && (
-          <div className="impact-text">{maxImpact}</div>
-        )}
-      </div>
-    );
+const Impact = ({ para, min, mid, mid2, max, max2, minImpact, midImpact, maxImpact }) => {
+  if (!mid2 && !max2) {
+    // Clear boundaries with 'else if' for mutually exclusive ranges
+    if (para > min && para <= mid) {
+      return <div className='impact-container'>{minImpact}</div>;
+    } else if (para > mid && para <= max) {
+      return <div className='impact-container'>{midImpact}</div>;
+    } else if (para > max) {
+      return <div className='impact-container'>{maxImpact}</div>;
+    }
+  } else {
+    // Clear boundaries with 'else if' for mutually exclusive ranges
+    if (para >= min && para <= mid2) {
+      return <div className='impact-container'>{minImpact}</div>;
+    } else if (para > mid2 && para <= max2) {
+      return <div className='impact-container'>{midImpact}</div>;
+    } else if (para > max || para > max2) {
+      return <div className='impact-container'>{maxImpact}</div>;
+    }
   }
-
-  return (
-    <div className="impact-container">
-      {(para >= min && para <= mid2) && (
-        <div className="impact-text">{minImpact}</div>
-      )}
-      {((para > mid2 && para <= max2) || (para >= mid && para < min)) && (
-        <div className="impact-text">{midImpact}</div>
-      )}
-      {((para > max && para < mid) || para > max2) && (
-        <div className="impact-text">{maxImpact}</div>
-      )}
-    </div>
-  );
+  // Return nothing if no condition is met
+  return null;
 };
 
-export default Impact;
+export default Impact; // Export statement added
