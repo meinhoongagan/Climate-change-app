@@ -153,7 +153,7 @@ const DesertPage = () => {
     beforeDraw: (chart) => {
       const { ctx, chartArea: { left, right }, scales: { y } } = chart;
       ctx.fillStyle = 'rgba(0, 255, 0, 0.1)';
-      ctx.fillRect(left, y.getPixelForValue(5), right - left, y.getPixelForValue(20) - y.getPixelForValue(5));
+      ctx.fillRect(left, y.getPixelForValue(0), right - left, y.getPixelForValue(20) - y.getPixelForValue(0));
       ctx.fillStyle = 'rgba(255, 255, 0, 0.1)';
       ctx.fillRect(left, y.getPixelForValue(20), right - left, y.getPixelForValue(40) - y.getPixelForValue(20));
       ctx.fillStyle = 'rgba(255, 0, 0, 0.1)';
@@ -278,7 +278,7 @@ const DesertPage = () => {
       <Bar data={data3} options={options3} className="chart" plugins={[plugin3]}/>
       <Impact 
         para={wind} 
-        min={5} 
+        min={0} 
         mid={20} 
         max={40} 
         minImpact='Light to moderate breezes; helps regulate temperature and move sand without significant impact.' 
@@ -289,7 +289,7 @@ const DesertPage = () => {
       <Bar data={data4} options={options4} className="chart" plugins={[plugin4]}/>
       <Impact 
         para={uv} 
-        min={4} 
+        min={0} 
         mid={7} 
         max={10} 
         minImpact='Moderate to high during cooler months; sun protection is advisable for prolonged exposure.' 
