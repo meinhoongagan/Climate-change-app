@@ -6,8 +6,8 @@
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
-  margin-top: 20px;
-  border-radius: 50px;
+  margin: 20px;
+  border-radius: 10px;
   position: relative;
 }
 
@@ -59,21 +59,17 @@
 }
 
 .Log-In {
-  color: white;
   padding: 8px 16px;
   font-weight: bold;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  background-color: #b1cab3;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .Log-In:hover {
-  color: #e0f7fa;
-  background-color: #08f914;
-  transform: translateY(-2px);
+  transform: scale(1.1);
 }
 
 .navbar-toggle {
@@ -114,7 +110,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
   .navbar {
     flex-wrap: wrap;
   }
@@ -166,3 +162,5 @@
     max-width: 200px;
   }
 }
+
+

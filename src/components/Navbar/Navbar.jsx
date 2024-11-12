@@ -8,19 +8,19 @@ import {
   faBars, 
   faTimes 
 } from '@fortawesome/free-solid-svg-icons';
-import './Navbar.css';
+import '../Navbar/Navbar.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 860);
 
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 860) {
         setMenuOpen(false);
       }
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 860);
     };
 
     window.addEventListener('resize', handleResize);
@@ -64,6 +64,7 @@ const Navbar = () => {
         <li><Link to="/events" onClick={() => isMobile && setMenuOpen(false)}>Upcoming Events</Link></li>
         <li><Link to="/resources" onClick={() => isMobile && setMenuOpen(false)}>Resources</Link></li>
         <li><Link to="/cart" onClick={() => isMobile && setMenuOpen(false)}>Eco Basket</Link></li>
+        <li><Link to="/simulator" onClick={() => isMobile && setMenuOpen(false)}>Simulator</Link></li>
       </ul>
 
       <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
@@ -83,8 +84,8 @@ const Navbar = () => {
       </div>
 
       <div className={`navbar-login ${menuOpen ? 'active' : ''}`}>
-        <button className='Log-In'>
-          <Link to="/login" onClick={() => isMobile && setMenuOpen(false)}>Log-In</Link>
+        <button className='Log-In' style={{backgroundColor: '#ff8800'}}>
+          <Link to="/login" onClick={() => isMobile && setMenuOpen(false)} style={{ textDecoration: 'none', color: 'white'}}>Log In</Link>
         </button>
       </div>
     </nav>
