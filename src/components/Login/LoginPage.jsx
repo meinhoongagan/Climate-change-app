@@ -7,17 +7,31 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    const user = storedUsers.find(user => user.email === email && user.password === password);
+    const userCredentials = { email, password };
 
-    if (user) {
-      alert('Login successful');
-      navigate('/');
-    } else {
-      alert('Invalid email or password');
+    try {
+      const response = await fetch('http://localhost:8000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userCredentials),
+      });
+
+      const data = await response.json();
+      if (response.status === 200) {
+        alert('Login successful');
+        // Save the user ID in sessionStorage
+        sessionStorage.setItem('userId', data.user._id);
+        navigate('/'); // Redirect to home or dashboard page
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      alert('Error: ' + error.message);
     }
   };
 

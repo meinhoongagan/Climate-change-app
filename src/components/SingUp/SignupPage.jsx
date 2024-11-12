@@ -8,16 +8,30 @@ const SignupPage = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newUser = { name, email, password };
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    storedUsers.push(newUser);
-    localStorage.setItem('users', JSON.stringify(storedUsers));
 
-    alert('Signup successful');
-    navigate('/login'); // Redirect to the login page
+    try {
+      const response = await fetch('http://localhost:8000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      const data = await response.json();
+      if (response.status === 201) {
+        alert('Signup successful');
+        navigate('/login');
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      alert('Error: ' + error.message);
+    }
   };
 
   return (

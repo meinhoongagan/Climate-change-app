@@ -15,7 +15,7 @@ const WeatherWidget = () => {
     console.log('WeatherWidget mounted');
     AOS.init({
       duration: 1200,
-    });
+    },[]);
 
     const fetchWeatherData = async (latitude, longitude) => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
