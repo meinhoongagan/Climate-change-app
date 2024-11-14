@@ -7,13 +7,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-title {
+/* Header styling */
+.carbon-container h2 {
   text-align: center;
   font-size: 2em;
   margin-bottom: 20px;
 }
 
-.form {
+/* Form styling */
+.carbon-container form {
   display: flex;
   flex-direction: column;
 }
@@ -49,14 +51,13 @@
 .submit-button {
   background-color: #007bff;
   color: white;
-  padding: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 1.2em;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.submit-button:hover {
+.carbon-container form button:hover {
   background-color: #0056b3;
 }
