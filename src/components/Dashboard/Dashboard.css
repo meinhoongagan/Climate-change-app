@@ -1,0 +1,268 @@
+
+.dashboard{
+    width: 100vw;   
+}
+
+.sidebar{
+    width: 350px;
+    min-height: 84vh;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgb(238, 238, 238);
+    position: fixed;
+    background-image: url('../../../public/lovepik-cartoon-nature-landscape-synthetic-background-image_605823504.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.profile{
+    font-weight: bold;
+    font-size: 35px;
+    width: 100%;
+    margin: 25px;
+    text-align: center;
+}
+
+.photo{
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-icon{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 20;
+    color: rgb(65, 65, 65);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-pic{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info{
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    background-color: skyblue;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.name, .email{
+    text-align: center;
+}
+
+.name{
+    line-height: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.email{
+    color: rgb(87, 53, 53);
+    font-size: large;
+}
+
+.info-icon{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-button p{
+    display:inline-block;
+    margin: 10px 5px;
+    color: crimson;
+    font-size: 17px;
+}
+
+.logout-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.logout-button:hover{
+    transform: scale(1.1);
+}
+
+.dash{
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    margin: 20px;
+}
+
+.activities{
+    margin: 0px 20px 0px 400px;
+    display: flex;
+    padding-top: 80px;
+    
+}
+
+.scoremeter{
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.white{
+    background-color: white;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 22;
+    right: 163px;
+    top: 163px;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: crimson;
+}
+
+.red{
+    background-color: crimson;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 20;
+    right: 150px;
+    top: 150px;
+}
+
+.orange{
+    background-color: orangered;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 18;
+    right: 125px;
+    top: 125px;
+}
+
+
+.yellow{
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 16;
+    right: 100px;
+    top: 100px;
+}
+
+
+.lightgreen{
+    background-color: greenyellow;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 14;
+    right: 75px;
+    top: 75px;
+}
+
+.green{
+    background-color: #41aa46;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 12;
+    right: 50px;
+    top: 50px;
+}
+
+.stats{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgb(238, 238, 238);
+
+}
+
+.stats h2{
+    width: 90%;
+}
+
+.eco-score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.compli{
+    font-size:30px;
+    line-height: 10px;
+}
+
+.statistics{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.card{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgb(238, 238, 238);
+    width: 100%;
+    padding: 20px;
+    height: 150px;
+}
+
