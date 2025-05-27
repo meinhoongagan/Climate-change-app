@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import axios from 'axios';
 
 export const UserSlice = createSlice({
     name: 'user',
@@ -9,7 +8,7 @@ export const UserSlice = createSlice({
         loading: false,
         comments:[],
         blogs:[],
-        likes:[]
+        likes:[],
     },
 
     reducers:{

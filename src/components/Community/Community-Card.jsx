@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Avatar from '@mui/joy/Avatar';
@@ -15,9 +14,11 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import ModeCommentOutlined from '@mui/icons-material/ModeCommentOutlined';
 import Face from '@mui/icons-material/Face';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBlogs } from '../../redux/UserSlice.js';
 
 // Utility function to show time ago
 function getTimeAgo(createdAt) {
@@ -40,7 +41,7 @@ function getTimeAgo(createdAt) {
 // CommentsList component
 const CommentsList = ({ comments }) => {
   const [showAll, setShowAll] = useState(false);
-  
+
   if (!comments || comments.length === 0) {
     return (
       <Typography sx={{ fontSize: 'sm', color: 'text.tertiary', ml: 4 }}>
@@ -86,27 +87,70 @@ const CommunityCard = ({
   CreationDate,
   blogId,
   comments = [],
-  imageUrl
+  imageUrl,
+  user,
+  likedUsers = []
 }) => {
-  const user = useSelector((state) => state.UserStates.user);
-  const currentuserid = user._id;
+  const currentuserid = user?._id;
   const [commentContent, setcommentContent] = useState('');
   const [showComments, setShowComments] = useState(false);
   const [localComments, setLocalComments] = useState(comments);
-  const [isLiked, setisLiked] = useState(true);
+  const [showActions, setShowActions] = useState(false);
 
-  const handleLiked = async () =>{
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const blogs = useSelector((state) => state.UserStates.blogs);
+
+  // Like state
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(LikesCount);
+
+  // update and delete 
+  const handleUpdate = () => {
+  navigate(`/update-post/${blogId}`);
+  setShowActions(false);
+  // Example: navigate(`/update-post/${blogId}`);
+};
+
+const handleDelete = async () => {
+  setShowActions(false);
+  try {
+    await axios.delete(`http://localhost:8000/api/posts/delete-post/${blogId}`);
+    navigate('/community');
+    const blogs = await axios.get("http://localhost:8000/api/posts/all-post");
+    dispatch(setBlogs(blogs.data.data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+  useEffect(() => {
+    // Check if current user has liked this post
+    if (likedUsers && Array.isArray(likedUsers) && currentuserid) {
+      setIsLiked(likedUsers.includes(currentuserid));
+    }
+    setLikeCount(LikesCount);
+  }, [likedUsers, currentuserid, LikesCount]);
+
+  const handleLiked = async () => {
+    // Optimistic UI update
+    setIsLiked((prev) => !prev);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
     try {
-      const res = await axios.post(`http://localhost:8000/api/posts/like/${blogId}`,{userid:currentuserid});
-      console.log("liked",res.data);
-      setisLiked(res.data.Liked);
+      await axios.post(`http://localhost:8000/api/posts/like/${blogId}`, { userid: currentuserid });
+      // Optionally, re-fetch likes from server here if needed
     } catch (error) {
+      // Revert UI if API fails
+      setIsLiked((prev) => !prev);
+      setLikeCount((prev) => (isLiked ? prev + 1 : prev - 1));
       console.log(error);
     }
-  }
+  };
 
   // If comments prop changes, update local state
-  React.useEffect(() => {
+  useEffect(() => {
     setLocalComments(comments);
   }, [comments]);
 
@@ -118,7 +162,6 @@ const CommunityCard = ({
     try {
       const res = await axios.post(`http://localhost:8000/api/posts/comment/${blogId}`, data);
       setcommentContent('');
-      // Add new comment to local state for instant UI update
       setLocalComments((prev) => [
         ...prev,
         {
@@ -137,10 +180,10 @@ const CommunityCard = ({
       variant="outlined"
       sx={{
         minWidth: {
-          xs: '100%',  // phones
-          sm: 300,     // tablets
-          md: 400,     // desktops
-          lg: 500,     // large screens
+          xs: '100%',
+          sm: 300,
+          md: 400,
+          lg: 500,
         },
         '--Card-radius': (theme) => theme.vars.radius.xs,
         mt: { xs: 1, sm: 2, md: 3 },
@@ -174,12 +217,51 @@ const CommunityCard = ({
         </Box>
         <Typography sx={{ fontWeight: 'lg' }}>{name}</Typography>
         {currentuserid === authorid ? (
-          <IconButton variant="plain" color="neutral" size="sm" sx={{ ml: 'auto' }}>
-            <MoreHoriz />
-          </IconButton>
-        ) : (
-          ""
-        )}
+  <Box sx={{ ml: 'auto', position: 'relative' }}>
+    <IconButton
+      variant="plain"
+      color="neutral"
+      size="sm"
+      onClick={() => setShowActions((prev) => !prev)}
+    >
+      <MoreHoriz />
+    </IconButton>
+    {showActions && (
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 30,
+          right: 0,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 1,
+          bgcolor: 'background.paper',
+          borderRadius: 1,
+          boxShadow: 2,
+          zIndex: 10,
+          p: 0.5,
+        }}
+      >
+        <IconButton
+          size="sm"
+          color="primary"
+          onClick={handleUpdate}
+          title="Update"
+        >
+          <span className="material-icons">edit</span>
+        </IconButton>
+        <IconButton
+          size="sm"
+          color="danger"
+          onClick={handleDelete}
+          title="Delete"
+        >
+          <span className="material-icons">delete</span>
+        </IconButton>
+      </Box>
+    )}
+  </Box>
+) : null}
       </CardContent>
       <CardOverflow>
         <AspectRatio>
@@ -189,13 +271,11 @@ const CommunityCard = ({
       <CardContent orientation="horizontal" sx={{ alignItems: 'center', mx: -1 }}>
         <Box sx={{ width: 0, display: 'flex', gap: 0.5 }}>
           <IconButton variant="plain" color="neutral" size="sm" onClick={handleLiked}>
-            
             {isLiked ? (
-            <Favorite sx={{ color: 'red' }} />
-              ) : ( 
-            <FavoriteBorder />
+              <Favorite sx={{ color: 'red' }} />
+            ) : (
+              <FavoriteBorder />
             )}
-
           </IconButton>
           <IconButton variant="plain" color="neutral" size="sm">
             <ModeCommentOutlined />
@@ -209,7 +289,7 @@ const CommunityCard = ({
           textColor="text.primary"
           sx={{ fontSize: 'sm', fontWeight: 'lg' }}
         >
-          {`${LikesCount} Likes`}
+          {`${likeCount} Likes`}
         </Link>
         <Typography sx={{ fontSize: 'sm' }}>
           <Link
@@ -229,7 +309,6 @@ const CommunityCard = ({
           sx={{ fontSize: 'sm', color: 'text.tertiary' }}
         >
           more
-          {/* todo to hide content if length is big */}
         </Link>
         <Link
           component="button"
