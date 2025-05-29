@@ -3,8 +3,6 @@ import axios from 'axios';
 import Popup from './Popup'; // Import the popup component
 import './Calculator.css';  // Make sure to create the CSS file
 
-
-
 const Calculator = () => {
   const [formData, setFormData] = useState({
     userId: '',

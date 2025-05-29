@@ -1,78 +1,151 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Dashboard/Dashboard.css';
 import FeatherIcon from 'feather-icons-react';
+import axios from 'axios';
 
 const Dashboard = () => {
+  const [pdfs, setPdfs] = useState([]);
+  const [user, setUser] = useState({});
+  
+  useEffect(() => {
+
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    setUser(userData);
+
+    const getAllPdfs = async () => {
+      try {
+        const userId = sessionStorage.getItem('userId');
+        const response = await axios.get(`http://localhost:8000/api/pdf/getPdfs/${userId}`, {
+          withCredentials: true
+        });
+
+        if (response.status === 200) {
+          setPdfs(response.data.pdfs);
+          console.log(response.data.pdfs);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getAllPdfs();
+  }, []);
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+  };
+
+  // Handle View button click
+  const handleView = (pdfUrl) => {
+    if (pdfUrl) {
+      window.open(pdfUrl, '_blank');
+    } else {
+      console.error('No PDF URL provided');
+    }
+  };
+
   return (
-    <div className='dashboard'>
-      <div className='sidebar'>
-        <div className='details'>
-        <p className='profile'>Climate App</p>
-          <div className='photo'>
-            <img src="https://images.pexels.com/photos/4974360/pexels-photo-4974360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="User Profile" className="profile-pic" />
-            <button className='photo-icon'><FeatherIcon icon="edit"/></button>       
-          </div>
-          <div className='info'>
-            <button className='info-icon'><FeatherIcon icon="edit" /></button>
-            <p className='name'>John Doe</p>
-            <p className='email'>john.doe@example.com<br/>
-            New York, USA</p>
-          </div>
-          <div className='dash'></div>
-        </div>
-        <div className='logout'>
-            <button className='logout-button'>
-              <p>LogOut</p>
-              <FeatherIcon icon="log-out" color ='crimson' size={20}/>
+    <div className="dashboard">
+      {/* Sidebar Section */}
+      <aside className="sidebar">
+        <div className="details">
+          <p className="profile">Climate App</p>
+
+          {/* Profile Photo Section */}
+          <div className="photo">
+            <img
+              src="https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+              alt="User Profile"
+              className="profile-pic"
+            />
+            <button className="photo-icon">
+              <FeatherIcon icon="edit" />
             </button>
-        </div>
-      </div>
+          </div>
 
-      <div className='activities'>
-        <div className='stats'>
-          <h2>Your Eco Score</h2>
-          <div className='eco-score'>
-            <div className='scoremeter'>
-                  <div className='white'>60</div>
-                  <div className='red'></div>
-                  <div className='orange'></div>
-                  <div className='yellow'></div>
-                  <div className='lightgreen'></div>
-                  <div className='green'></div>
+          {/* User Info Section */}
+          <div className="info">
+            <button className="info-icon">
+              <FeatherIcon icon="edit" />
+            </button>
+            <p className="name">{user.name}</p>
+            <p className="email">
+              {user.email}
+            </p>
+          </div>
+          <div className="dash" />
+        </div>
+
+        {/* Logout Button */}
+        <div className="logout">
+          <button className="logout-button">
+            <p>LogOut</p>
+            <FeatherIcon icon="log-out" color="crimson" size={20} />
+          </button>
+        </div>
+      </aside>
+
+      <div className='outer-container'>
+        <div className='activities'>
+          <div className='cards'>
+            <p className='heading'>Carbon Emission reports</p>
+            <div className='content'>
+              {pdfs.length === 0 ? (
+                <p>No report yet.</p>
+              ) : (
+                <div className="pdf-cards">
+                  {pdfs.map((pdf, index) => (
+                    <div key={index} className="pdf-card">
+                      <img
+                        src="https://blog.idrsolutions.com/app/uploads/2020/10/pdf-1.png"
+                        alt="PDF Thumbnail"
+                        className="pdf-thumbnail"
+                      />
+                      <p className="pdf-created-at">
+                        Created: {formatDate(pdf.createdAt)}
+                      </p>
+                      <div className="pdf-buttons">
+                        <button className="pdf-button" onClick={() => handleView(pdf.url)}>
+                          <FeatherIcon icon="eye" size={16} /> View
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <p className='compli'>Keep It Up!!</p>
-            <p>Note: The color of the score will change from red to green as you score more.</p>
+          </div>
+          <div className='cards'>
+            <p className='heading'>Purchased products</p>
+            <div className='content'>No purchase yet.</div>
+          </div>
+          <div className='cards'>
+            <p className='heading'>Blog posts</p>
+            <div className='content'>
+              No post yet.
+            </div>
           </div>
         </div>
-
-        <div className='statistics'>
-      <div className="card">
-          <h2>
-            <FeatherIcon icon="bar-chart-2" size={20}/>
-             Statistics
-          </h2>
-          <p>Track your climate impact statistics here.</p>
-        </div>
-        <div className="card">
-          <h2>
-            <FeatherIcon icon="activity" size={20}/>
-             Activities
-          </h2>
-          <p>See your recent eco-friendly activities and updates.</p>
-        </div>
-        <div className="card">
-          <h2>
-            <FeatherIcon icon="book" size={20}/>
-             Resources
-          </h2>
-          <p>Access useful resources and tools to live a greener lifestyle.</p>
-        </div>
       </div>
-      </div>
-
-      
     </div>
   );
 };
+
+// Reusable Card component
+const Card = ({ icon, title, description }) => (
+  <div className="card">
+    <h2>
+      <FeatherIcon icon={icon} size={20} /> {title}
+    </h2>
+    <p>{description}</p>
+  </div>
+);
 
 export default Dashboard;

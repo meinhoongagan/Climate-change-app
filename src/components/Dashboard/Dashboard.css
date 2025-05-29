@@ -1,268 +1,232 @@
-
-.dashboard{
-    width: 100vw;   
+/* Root Dashboard layout */
+.dashboard {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  display: flex;
 }
 
-.sidebar{
-    width: 350px;
-    min-height: 84vh;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgb(238, 238, 238);
-    position: fixed;
-    background-image: url('../../../public/lovepik-cartoon-nature-landscape-synthetic-background-image_605823504.jpg');
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
-
+/* Sidebar styles */
+.sidebar {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background-image: url('../../../public/lovepik-cartoon-nature-landscape-synthetic-background-image_605823504.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  border: 1px solid rgb(238, 238, 238);
+  padding: 20px 10px;
 }
 
-.details{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-
+/* Sidebar Top Content */
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.profile{
-    font-weight: bold;
-    font-size: 35px;
-    width: 100%;
-    margin: 25px;
-    text-align: center;
+.profile {
+  font-weight: bold;
+  font-size: 35px;
+  margin: 25px 0;
+  text-align: center;
 }
 
-.photo{
-    position: relative;
-    width: 130px;
-    height: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Profile Photo Section */
+.photo {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.photo-icon{
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    z-index: 20;
-    color: rgb(65, 65, 65);
-    background: none;
-    border: none;
-    cursor: pointer;
+.profile-pic {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.profile-pic{
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
+.photo-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(65, 65, 65);
 }
 
-.info{
-    position: relative;
-    width: 100%;
-    margin-top: 20px;
-    background-color: skyblue;
-    border-radius: 10px;
-    width: 70%;
+/* User Info Section */
+.info {
+  position: relative;
+  width: 70%;
+  background-color: skyblue;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px 5px;
 }
 
-.name, .email{
-    text-align: center;
+.name,
+.email {
+  text-align: center;
 }
 
-.name{
-    line-height: 10px;
-    color: black;
-    font-weight: bold;
-    font-size: 27px;
+.name {
+  font-size: 27px;
+  font-weight: bold;
+  color: black;
+  margin: 5px 0;
+  line-height: 1.2;
 }
 
-.email{
-    color: rgb(87, 53, 53);
-    font-size: large;
+.email {
+  font-size: large;
+  color: rgb(87, 53, 53);
 }
 
-.info-icon{
-    position: absolute;
-    top: 10px;
-    right: 5px;
-    color: black;
-    background: none;
-    border: none;
-    cursor: pointer;
+.info-icon {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
 }
 
-.logout-button p{
-    display:inline-block;
-    margin: 10px 5px;
-    color: crimson;
-    font-size: 17px;
+/* Divider Line */
+.dash {
+  height: 1px;
+  background-color: white;
+  width: 70%;
+  margin: 20px auto;
 }
 
-.logout-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 10px;
+/* Logout Button */
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.logout-button:hover{
-    transform: scale(1.1);
+.logout-button:hover {
+  transform: scale(1.1);
 }
 
-.dash{
-    height: 1px;
-    background-color: rgb(255, 255, 255);
-    width: 70%;
-    margin: 20px;
+.logout-button p {
+  color: crimson;
+  font-size: 17px;
+  margin: 0 5px;
+}
+
+.outer-container{
+  height: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .activities{
-    margin: 0px 20px 0px 400px;
-    display: flex;
-    padding-top: 80px;
-    
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
 
-.scoremeter{
-    position: relative;
-    width: 400px;
-    height: 400px;
+.cards{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
 }
 
-.white{
-    background-color: white;
-    height: 75px;
-    width: 75px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 22;
-    right: 163px;
-    top: 163px;
-    font-weight: bold;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: crimson;
+.heading{
+  font-weight: bold;
+  font-size: larger;
+  width: 100%;
+  line-height: 0;
+  background-color: green;
 }
 
-.red{
-    background-color: crimson;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 20;
-    right: 150px;
-    top: 150px;
+.content{
+  height: 200px;
+  width: 100%;
+  overflow-y: auto;
 }
 
-.orange{
-    background-color: orangered;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 18;
-    right: 125px;
-    top: 125px;
+.pdf-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
 }
 
-
-.yellow{
-    background-color: yellow;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 16;
-    right: 100px;
-    top: 100px;
+.pdf-card {
+  max-width: 250px;
+  background-color: white;
+  border: 1px solid rgb(238, 238, 238);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-.lightgreen{
-    background-color: greenyellow;
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 14;
-    right: 75px;
-    top: 75px;
+.pdf-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-.green{
-    background-color: #41aa46;
-    height: 300px;
-    width: 300px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 12;
-    right: 50px;
-    top: 50px;
+.pdf-buttons {
+  display: flex;
+  gap: 5px;
 }
 
-.stats{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgb(238, 238, 238);
-
+.pdf-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.stats h2{
-    width: 90%;
+.pdf-button:hover {
+  background-color: #e0e0e0;
 }
 
-.eco-score{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.pdf-created-at {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+  text-align: center;
 }
-
-.compli{
-    font-size:30px;
-    line-height: 10px;
-}
-
-.statistics{
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 40px;
-}
-
-.card{
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgb(238, 238, 238);
-    width: 100%;
-    padding: 20px;
-    height: 150px;
-}
-

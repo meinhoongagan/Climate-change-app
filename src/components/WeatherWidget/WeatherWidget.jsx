@@ -12,7 +12,6 @@ const WeatherWidget = () => {
   const apiKey = 'e0da1f4d5233a12ed005f0435dfb06fa'; 
 
   useEffect(() => {
-    console.log('WeatherWidget mounted');
     AOS.init({
       duration: 1200,
     },[]);
@@ -25,7 +24,6 @@ const WeatherWidget = () => {
           throw new Error('Weather data not available');
         }
         const data = await response.json();
-        console.log('Weather data fetched:', data);
         setWeatherData(data);
         setLoading(false);
       } catch (error) {
