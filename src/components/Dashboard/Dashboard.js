@@ -6,9 +6,9 @@ import axios from 'axios';
 const Dashboard = () => {
   const [pdfs, setPdfs] = useState([]);
   const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
   
   useEffect(() => {
-
     const userData = JSON.parse(localStorage.getItem('userData'));
     setUser(userData);
 
@@ -21,14 +21,31 @@ const Dashboard = () => {
 
         if (response.status === 200) {
           setPdfs(response.data.pdfs);
-          console.log(response.data.pdfs);
         }
       } catch (error) {
         console.log(error);
       }
     };
 
+    const getAllPosts = async () => {
+      try {
+        const userId = sessionStorage.getItem('userId');
+        const response = await axios.get(`http://localhost:8000/api/posts/get-user-posts/${userId}`, {
+          withCredentials: true
+        });
+
+        if (response.status === 200) {
+          setPosts(response.data.posts);
+          console.log(response.data.posts);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getAllPosts();
     getAllPdfs();
+    
   }, []);
 
   const formatDate = (dateString) => {
@@ -42,12 +59,21 @@ const Dashboard = () => {
     });
   };
 
-  // Handle View button click
+  // Handle View button click for PDFs
   const handleView = (pdfUrl) => {
     if (pdfUrl) {
       window.open(pdfUrl, '_blank');
     } else {
       console.error('No PDF URL provided');
+    }
+  };
+
+  // Handle View button click for Posts
+  const handleViewPost = (postUrl) => {
+    if (postUrl) {
+      window.open(postUrl, '_blank');
+    } else {
+      console.error('No Post URL provided');
     }
   };
 
@@ -76,9 +102,7 @@ const Dashboard = () => {
               <FeatherIcon icon="edit" />
             </button>
             <p className="name">{user.name}</p>
-            <p className="email">
-              {user.email}
-            </p>
+            <p className="email">{user.email}</p>
           </div>
           <div className="dash" />
         </div>
@@ -129,7 +153,36 @@ const Dashboard = () => {
           <div className='cards'>
             <p className='heading'>Blog posts</p>
             <div className='content'>
-              No post yet.
+              {posts.length === 0 ? (
+                <p>No post yet.</p>
+              ) : (
+                <div className="post-cards">
+                  {posts.map((post, index) => (
+                    <div key={index} className="post-card">
+                      <img
+                        src={post.image || 'https://via.placeholder.com/100'}
+                        alt="Post Thumbnail"
+                        className="post-thumbnail"
+                      />
+                      <div className="post-content">
+                        <div className="post-info">
+                          <p className="post-stats">
+                            <FeatherIcon icon="heart" size={14} /> {post.likes?.length || 0} Likes
+                          </p>
+                          <p className="post-stats">
+                            <FeatherIcon icon="message-circle" size={14} /> {post.comments?.length || 0} Comments
+                          </p>
+                        </div>
+                        <div className="post-buttons">
+                          <button className="post-button" onClick={() => handleViewPost(post.url)}>
+                            <FeatherIcon icon="eye" size={16} /> View
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
