@@ -1,11 +1,12 @@
 // store.js
-
 import { configureStore } from '@reduxjs/toolkit';
 import simulatorReducer from './redux/simulatorSlice';
+import userReducer from './redux/UserSlice';   
 
 const store = configureStore({
   reducer: {
-    simulator: simulatorReducer,  // Add the simulator reducer here
+    simulator: simulatorReducer,
+    UserStates: userReducer,   
   },
 });
 

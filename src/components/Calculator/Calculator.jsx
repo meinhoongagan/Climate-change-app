@@ -42,7 +42,7 @@ const Calculator = () => {
   useEffect(() => {
     const userIdFromStorage = sessionStorage.getItem('userId');
     setUserId(userIdFromStorage)
-    console.log(userIdFromStorage);
+    // console.log(userIdFromStorage);
     if (userIdFromStorage) {
       setFormData((prevData) => ({
         ...prevData,
@@ -92,7 +92,7 @@ const Calculator = () => {
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form">
         {/* Transportation */}
-      <h2 className="form-title">Carbon Footprint Calculator</h2>
+      <h1 className="form-title">Carbon Footprint Calculator</h1>
         <div className="form-section">
           <h3 className="form-subtitle">Transportation</h3>
           <label htmlFor="mode" className="form-label">Mode</label>
@@ -121,7 +121,7 @@ const Calculator = () => {
           />
 
           <div className="form-checkbox">
-            <label htmlFor="carpooling" className="form-label">Carpooling</label>
+            <label htmlFor="carpooling" className="form-label">Pooling(Sharing vehicles)</label>
             <input
               id="carpooling"
               type="checkbox"
@@ -135,7 +135,8 @@ const Calculator = () => {
         {/* Energy Usage */}
         <div className="form-section">
           <h3 className="form-subtitle">Energy Usage</h3>
-          <label htmlFor="appliances" className="form-label">Appliances (hours)</label>
+          <label htmlFor="appliances" className="form-label">Appliances Usage (hours)</label>
+          <p className='form-subtitle-description'>Enter the number of hours spent on appliances</p>
           <input
             id="appliances"
             type="number"
@@ -166,7 +167,7 @@ const Calculator = () => {
         {/* Food Consumption */}
         <div className="form-section">
           <h3 className="form-subtitle">Food Consumption</h3>
-          <label htmlFor="meals" className="form-label">Meals</label>
+          <label htmlFor="meals" className="form-label">Meals (type of meals)</label>
           <select
             id="meals"
             value={formData.foodConsumption.meals}
@@ -179,13 +180,16 @@ const Calculator = () => {
           </select>
 
           <label htmlFor="snacksAndDrinks" className="form-label">Snacks and Drinks</label>
-          <input
+          <select
             id="snacksAndDrinks"
             type="text"
             value={formData.foodConsumption.snacksAndDrinks}
             onChange={(e) => handleChange('foodConsumption', 'snacksAndDrinks', e.target.value)}
             className="form-input"
-          />
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
 
           <label htmlFor="foodWaste" className="form-label">Food Waste</label>
           <select
@@ -228,7 +232,7 @@ const Calculator = () => {
         {/* Water Usage */}
         <div className="form-section">
           <h3 className="form-subtitle">Water Usage</h3>
-          <label htmlFor="numberOfShowers" className="form-label">Number of Showers</label>
+          <label htmlFor="numberOfShowers" className="form-label">Number of Showers taken</label>
           <input
             id="numberOfShowers"
             type="number"
@@ -237,7 +241,7 @@ const Calculator = () => {
             className="form-input"
           />
 
-          <label htmlFor="showerDuration" className="form-label">Shower Duration (minutes)</label>
+          <label htmlFor="showerDuration" className="form-label">Average Shower Duration (minutes)</label>
           <input
             id="showerDuration"
             type="number"
@@ -246,7 +250,7 @@ const Calculator = () => {
             className="form-input"
           />
 
-          <label htmlFor="laundryDone" className="form-label">Laundry Done</label>
+          <label htmlFor="laundryDone" className="form-label">Laundry Size</label>
           <select
             id="laundryDone"
             value={formData.waterUsage.laundryDone}
@@ -271,7 +275,7 @@ const Calculator = () => {
             className="form-checkbox-input"
           />
 
-          <label htmlFor="reusableItemsUsed" className="form-label">Reusable Items Used</label>
+          <label htmlFor="reusableItemsUsed" className="form-label">Reuse the items</label>
           <input
             id="reusableItemsUsed"
             type="checkbox"
@@ -281,7 +285,7 @@ const Calculator = () => {
           />
         </div>
 
-        <button type="submit" className="submit-button" onClick={fetchReportData}>Save and Get Report</button>
+        <button type="submit" className="submit-button-calculator" onClick={fetchReportData}>Save and Get Report</button>
       </form>
       {showPopup && (
         <Popup data={responseData.report} onClose={closePopup} />

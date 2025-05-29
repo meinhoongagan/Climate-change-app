@@ -9,10 +9,14 @@ import {
   faTimes 
 } from '@fortawesome/free-solid-svg-icons';
 import '../Navbar/Navbar.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogout } from '../../redux/UserSlice';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 860);
+  const isLogedIn = useSelector((state) => state.UserStates.isLogedIn);
+  const dispatch= useDispatch();
 
   // Handle window resize
   useEffect(() => {
@@ -43,6 +47,12 @@ const Navbar = () => {
     return () => document.removeEventListener('click', closeMenu);
   }, [menuOpen]);
 
+
+  const handleLogout = () => {
+    isMobile && setMenuOpen(false);
+    dispatch(setLogout());
+  };
+
   return (
       <nav className="navbar">
       <div className="navbar-brand">
@@ -65,6 +75,8 @@ const Navbar = () => {
         <li><Link to="/resources" onClick={() => isMobile && setMenuOpen(false)}>Resources</Link></li>
         <li><Link to="/cart" onClick={() => isMobile && setMenuOpen(false)}>Eco Basket</Link></li>
         <li><Link to="/simulator" onClick={() => isMobile && setMenuOpen(false)}>Simulator</Link></li>
+        {/* todo : make either community section private or use cookies for verification */}
+        {isLogedIn && <li><Link to="/community" onClick={() => isMobile && setMenuOpen(false)}>Community</Link></li>}
       </ul>
 
       <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
@@ -85,7 +97,7 @@ const Navbar = () => {
 
       <div className={`navbar-login ${menuOpen ? 'active' : ''}`}>
         <button className='Log-In' style={{backgroundColor: '#ff8800'}}>
-          <Link to="/login" onClick={() => isMobile && setMenuOpen(false)} style={{ textDecoration: 'none', color: 'white'}}>Log In</Link>
+          <Link to="/login" onClick={handleLogout} style={{ textDecoration: 'none', color: 'white'}} >{isLogedIn ? "Log Out" : "Log In"}</Link>
         </button>
       </div>
     </nav>
