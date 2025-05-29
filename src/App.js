@@ -18,6 +18,9 @@ import MountainPage from './components/MountainPage/MountainPage';
 import DesertPage from './components/DesertPage/DesertPage';
 import ForestPage from './components/ForestPage/ForestPage';
 import Parameter from './components/Parameter/Parameter';
+import Community from './components/Community/Community';
+import Createblog from './components/Community/Createblog';
+import EditBlog from './components/Community/EditBlog';
 
 const SimulatorLayout = () => {
   return (
@@ -54,6 +57,9 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/cart" element={<EcoCart />} />
           <Route path="/simulator/*" element={<SimulatorLayout />} />
+          <Route path="/community" element={<Community/>} />
+          <Route path="/createblog" element={<Createblog/>} />
+          <Route path="/update-post/:blogid" element={<EditBlog/>} />
         </Routes>
       </div>
     </Router>

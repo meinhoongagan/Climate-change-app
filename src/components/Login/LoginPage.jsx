@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/UserSlice';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch =useDispatch()
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,6 +29,7 @@ const LoginPage = () => {
         alert('Login successful');
         // Save the user ID in sessionStorage
         sessionStorage.setItem('userId', data.user._id);
+        dispatch(setUser(data.user));
         navigate('/'); // Redirect to home or dashboard page
       } else {
         alert(data.message);
