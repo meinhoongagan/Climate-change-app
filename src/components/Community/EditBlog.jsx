@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UploadForm from './Uploadfrom';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_ENDPOINT from '../../config/api.js';
 
 const EditBlog = () => {
   const { blogid:id } = useParams();
@@ -11,7 +12,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/posts/get-post/${id}`);
+        const res = await axios.get(`${API_ENDPOINT}/api/posts/get-post/${id}`);
         if (res.data.success) {
           setInitialData({
             title: res.data.data.title,
@@ -28,7 +29,7 @@ const EditBlog = () => {
 
   const handleUpdate = async (data) => {
     try {
-      await axios.put(`http://localhost:8000/api/posts/update-post/${id}`, data);
+      await axios.put(`${API_ENDPOINT}/api/posts/update-post/${id}`, data);
       alert('Blog updated!');
       navigate('/community'); // Redirect after update
     } catch (error) {
