@@ -54,7 +54,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+      <nav className="navbar">
       <div className="navbar-brand">
         <Link to="/">Climate Action</Link>
       </div>
@@ -101,6 +101,7 @@ const Navbar = () => {
         </button>
       </div>
     </nav>
+    
   );
 };
 

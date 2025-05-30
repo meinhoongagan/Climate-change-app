@@ -4,8 +4,6 @@ import Popup from './Popup';
 import './Calculator.css'; 
 import API_ENDPOINT from "../../config/api.js";
 
-
-
 const Calculator = () => {
   const [formData, setFormData] = useState({
     userId: '',

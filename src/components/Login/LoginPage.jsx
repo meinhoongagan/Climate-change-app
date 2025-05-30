@@ -26,6 +26,7 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
+      localStorage.setItem('userData', JSON.stringify(data.user));
       if (response.status === 200) {
         alert('Login successful');
         // Save the user ID in sessionStorage

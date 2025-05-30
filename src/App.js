@@ -43,24 +43,24 @@ const SimulatorLayout = () => {
 const App = () => {
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tips" element={<Tips />} />
-          <Route path="/calculator" element={<Calculator />} />
-          <Route path="/events" element={<UpcomingEvents />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/subscribe" element={<Subscribe />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/cart" element={<EcoCart />} />
-          <Route path="/simulator/*" element={<SimulatorLayout />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tips" element={<Tips />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/events" element={<UpcomingEvents />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/subscribe" element={<Subscribe />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/cart" element={<EcoCart />} />
+            <Route path="/simulator/*" element={<SimulatorLayout />} />
           <Route path="/community" element={<Community/>} />
           <Route path="/createblog" element={<Createblog/>} />
           <Route path="/update-post/:blogid" element={<EditBlog/>} />
-        </Routes>
+          </Routes>
       </div>
     </Router>
   );
