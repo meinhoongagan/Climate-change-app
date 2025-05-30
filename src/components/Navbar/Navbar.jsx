@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,7 +46,6 @@ const Navbar = () => {
     return () => document.removeEventListener('click', closeMenu);
   }, [menuOpen]);
 
-
   const handleLogout = () => {
     isMobile && setMenuOpen(false);
     dispatch(setLogout());
@@ -56,6 +54,7 @@ const Navbar = () => {
   return (
       <nav className="navbar">
       <div className="navbar-brand">
+        <img src="4901433.png" alt="Climate Action Logo" className="navbar-logo" />
         <Link to="/">Climate Action</Link>
       </div>
 
@@ -75,7 +74,6 @@ const Navbar = () => {
         <li><Link to="/resources" onClick={() => isMobile && setMenuOpen(false)}>Resources</Link></li>
         <li><Link to="/cart" onClick={() => isMobile && setMenuOpen(false)}>Eco Basket</Link></li>
         <li><Link to="/simulator" onClick={() => isMobile && setMenuOpen(false)}>Simulator</Link></li>
-        {/* todo : make either community section private or use cookies for verification */}
         {isLogedIn && <li><Link to="/community" onClick={() => isMobile && setMenuOpen(false)}>Community</Link></li>}
       </ul>
 
@@ -101,7 +99,6 @@ const Navbar = () => {
         </button>
       </div>
     </nav>
-    
   );
 };
 

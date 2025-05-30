@@ -1,8 +1,8 @@
-/* src/styles/Navbar.css */
-
 .navbar {
+  margin-top: 10px;
+  margin-left: 70px;
   height:10%;
-  width: 100%;
+  width: 90%;
   background-color: #2e7d32;
   padding: 15px 20px;
   display: flex;
@@ -10,6 +10,17 @@
   align-items: center;
   border-radius: 10px;
   position: relative;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
 }
 
 .navbar-brand a {
@@ -109,6 +120,10 @@
   .navbar-links a {
     font-size: 14px;
   }
+
+  .navbar-logo {
+    height: 32px;
+  }
 }
 
 @media screen and (max-width: 860px) {
@@ -163,5 +178,3 @@
     max-width: 200px;
   }
 }
-
-
