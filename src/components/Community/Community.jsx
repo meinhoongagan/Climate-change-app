@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Community.css';
+// import './Cards.css'; 
 import CommunityCard from './Community-Card.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBlogs } from '../../redux/UserSlice.js';
@@ -15,20 +15,20 @@ const Community = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogs = await axios.get(`${API_ENDPOINT}/api/posts/all-post`);
-        dispatch(setBlogs(blogs.data.data));
+        const response = await axios.get(`${API_ENDPOINT}/api/posts/all-post`);
+        dispatch(setBlogs(response.data.data));
       } catch (error) {
         console.log(error);
       }
     };
     fetchBlogs();
-  }, [dispatch,blogs]);
+  }, [dispatch]); // Removed 'blogs' from dependencies to prevent infinite loop
 
   return (
-    <div className='wrapper'>
-      <div className='content'>
-        {/* community header */}
-        <div className='community-header'>
+    <div className='app-container'>
+      <div className='posts-container'>
+        {/* Community header */}
+        <div className='community-title'>
           <h1>Community</h1>
           <span>Join our community of users and share your experience with others.</span>
         </div>
@@ -53,7 +53,7 @@ const Community = () => {
         </div>
       </div>
       <Link to="/createblog">
-        <div className='create-blog-button'>+</div>
+        <div className='create-post-button'>+</div>
       </Link>
     </div>
   );
