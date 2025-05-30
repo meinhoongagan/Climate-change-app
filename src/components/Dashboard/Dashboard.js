@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import '../Dashboard/Dashboard.css';
 import FeatherIcon from 'feather-icons-react';
 import axios from 'axios';
+import API_ENDPOINT from'../../config/api.js'
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogout } from '../../redux/UserSlice';
 
 const Dashboard = () => {
   const [pdfs, setPdfs] = useState([]);
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
-  
+
+  const dispatch= useDispatch();
+
+
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('userData'));
     setUser(userData);
@@ -15,7 +22,7 @@ const Dashboard = () => {
     const getAllPdfs = async () => {
       try {
         const userId = sessionStorage.getItem('userId');
-        const response = await axios.get(`http://localhost:8000/api/pdf/getPdfs/${userId}`, {
+        const response = await axios.get(`${API_ENDPOINT}/api/pdf/getPdfs/${userId}`, {
           withCredentials: true
         });
 
@@ -30,7 +37,7 @@ const Dashboard = () => {
     const getAllPosts = async () => {
       try {
         const userId = sessionStorage.getItem('userId');
-        const response = await axios.get(`http://localhost:8000/api/posts/get-user-posts/${userId}`, {
+        const response = await axios.get(`${API_ENDPOINT}/api/posts/get-user-posts/${userId}`, {
           withCredentials: true
         });
 
@@ -68,14 +75,9 @@ const Dashboard = () => {
     }
   };
 
-  // Handle View button click for Posts
-  const handleViewPost = (postUrl) => {
-    if (postUrl) {
-      window.open(postUrl, '_blank');
-    } else {
-      console.error('No Post URL provided');
-    }
-  };
+  const handleLogout = () => {
+      dispatch(setLogout());
+   };
 
   return (
     <div className="dashboard">
@@ -109,10 +111,10 @@ const Dashboard = () => {
 
         {/* Logout Button */}
         <div className="logout">
-          <button className="logout-button">
+          <Link className="logout-button" to="/login" onClick={handleLogout}>
             <p>LogOut</p>
             <FeatherIcon icon="log-out" color="crimson" size={20} />
-          </button>
+          </Link>
         </div>
       </aside>
 
@@ -174,9 +176,9 @@ const Dashboard = () => {
                           </p>
                         </div>
                         <div className="post-buttons">
-                          <button className="post-button" onClick={() => handleViewPost(post.url)}>
+                          <Link className="post-button" to="/community">
                             <FeatherIcon icon="eye" size={16} /> View
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

@@ -267,7 +267,6 @@
 }
 
 .post-content {
-  min-width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -304,6 +303,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: #555;
+  text-decoration: none;
 }
 
 .post-button:hover {

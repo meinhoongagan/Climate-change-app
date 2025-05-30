@@ -1,2 +1,2 @@
-const API_ENDPOINT = "https://climate-app-backend.onrender.com"
+const API_ENDPOINT = "http://localhost:8000"
 export default API_ENDPOINT;
