@@ -7,7 +7,7 @@ const UpcomingEvents = () => {
     AOS.init({
       duration: 1200, // Animation duration
     });
-  })
+  },[])
   return (
     <div className="events-container">
       <section id="events" className="events-section" data-aos="fade-up">

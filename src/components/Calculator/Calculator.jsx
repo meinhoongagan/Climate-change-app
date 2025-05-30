@@ -1,7 +1,8 @@
 import React, { useState ,useEffect } from 'react';
 import axios from 'axios';
-import Popup from './Popup'; // Import the popup component
-import './Calculator.css';  // Make sure to create the CSS file
+import Popup from './Popup'; 
+import './Calculator.css'; 
+import API_ENDPOINT from "../../config/api.js";
 
 const Calculator = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ const Calculator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/footprint/', formData);
+      const response = await axios.post(`${API_ENDPOINT}/api/footprint/`, formData);
       setResponseData(response.data);
       setShowPopup(true);  // Show the popup with response data
     } catch (error) {
@@ -75,7 +76,7 @@ const Calculator = () => {
   const fetchReportData = async () => {
     try {
       // setLoading(true)
-      const response = await axios.get(`http://localhost:8000/api/carbon-report/${userId}`);
+      const response = await axios.get(`${API_ENDPOINT}/api/carbon-report/${userId}`);
       setResponseData(response.data);
       // setLoading(true)
       setShowPopup(true); // Show popup with report data
@@ -145,7 +146,7 @@ const Calculator = () => {
             className="form-input"
           />
 
-          <label htmlFor="lighting" className="form-label">Lighting (hours)</label>
+          <label htmlFor="lighting" className="form-label">Lighting Bulb (hours)</label>
           <input
             id="lighting"
             type="number"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUpPage.css';
+import API_ENDPOINT from "../../config/api.js";
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -14,7 +15,7 @@ const SignupPage = () => {
     const newUser = { name, email, password };
 
     try {
-      const response = await fetch('http://localhost:8000/api/users/register', {
+      const response = await fetch(`${API_ENDPOINT}/api/users/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

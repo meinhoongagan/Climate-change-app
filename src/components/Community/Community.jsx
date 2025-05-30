@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBlogs } from '../../redux/UserSlice.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_ENDPOINT from '../../config/api.js';
 
 const Community = () => {
   const user = useSelector((state) => state.UserStates.user);
@@ -14,7 +15,7 @@ const Community = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogs = await axios.get("http://localhost:8000/api/posts/all-post");
+        const blogs = await axios.get(`${API_ENDPOINT}/api/posts/all-post`);
         dispatch(setBlogs(blogs.data.data));
       } catch (error) {
         console.log(error);

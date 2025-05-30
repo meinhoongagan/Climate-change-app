@@ -19,6 +19,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBlogs } from '../../redux/UserSlice.js';
+import API_ENDPOINT from '../../config/api.js';
+
 
 // Utility function to show time ago
 function getTimeAgo(createdAt) {
@@ -115,9 +117,9 @@ const CommunityCard = ({
 const handleDelete = async () => {
   setShowActions(false);
   try {
-    await axios.delete(`http://localhost:8000/api/posts/delete-post/${blogId}`);
+    await axios.delete(`${API_ENDPOINT}/api/posts/delete-post/${blogId}`);
     navigate('/community');
-    const blogs = await axios.get("http://localhost:8000/api/posts/all-post");
+    const blogs = await axios.get(`${API_ENDPOINT}/api/posts/all-post`);
     dispatch(setBlogs(blogs.data.data));
   } catch (error) {
     console.log(error);
@@ -139,7 +141,7 @@ const handleDelete = async () => {
     setIsLiked((prev) => !prev);
     setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
     try {
-      await axios.post(`http://localhost:8000/api/posts/like/${blogId}`, { userid: currentuserid });
+      await axios.post(`${API_ENDPOINT}/api/posts/like/${blogId}`, { userid: currentuserid });
       // Optionally, re-fetch likes from server here if needed
     } catch (error) {
       // Revert UI if API fails
@@ -160,7 +162,7 @@ const handleDelete = async () => {
       content: commentContent
     };
     try {
-      const res = await axios.post(`http://localhost:8000/api/posts/comment/${blogId}`, data);
+      const res = await axios.post(`${API_ENDPOINT}/api/posts/comment/${blogId}`, data);
       setcommentContent('');
       setLocalComments((prev) => [
         ...prev,

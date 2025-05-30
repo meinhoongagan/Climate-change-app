@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/UserSlice';
+import API_ENDPOINT from '../../config/api.js';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const LoginPage = () => {
     const userCredentials = { email, password };
 
     try {
-      const response = await fetch('http://localhost:8000/api/users/login', {
+      const response = await fetch(`${API_ENDPOINT}/api/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

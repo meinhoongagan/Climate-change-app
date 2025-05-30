@@ -14,7 +14,7 @@ const WeatherWidget = () => {
   useEffect(() => {
     AOS.init({
       duration: 1200,
-    },[]);
+    });
 
     const fetchWeatherData = async (latitude, longitude) => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
@@ -50,7 +50,7 @@ const WeatherWidget = () => {
       setError('Geolocation is not supported by your browser');
       setLoading(false);
     }
-  });
+  }, []);
 
   const getWeatherSuggestions = () => {
     if (!weatherData || !weatherData.weather) return '';
