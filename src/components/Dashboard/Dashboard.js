@@ -4,7 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import axios from 'axios';
 import API_ENDPOINT from'../../config/api.js'
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/UserSlice';
 
 const Dashboard = () => {
@@ -192,15 +192,5 @@ const Dashboard = () => {
     </div>
   );
 };
-
-// Reusable Card component
-const Card = ({ icon, title, description }) => (
-  <div className="card">
-    <h2>
-      <FeatherIcon icon={icon} size={20} /> {title}
-    </h2>
-    <p>{description}</p>
-  </div>
-);
 
 export default Dashboard;
