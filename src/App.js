@@ -21,6 +21,7 @@ import Parameter from './components/Parameter/Parameter';
 import Community from './components/Community/Community';
 import Createblog from './components/Community/Createblog';
 import EditBlog from './components/Community/EditBlog';
+import ClimateGuard from './components/ClimateGuard/ClimateGuard';
 
 const SimulatorLayout = () => {
   return (
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/community" element={<Community/>} />
           <Route path="/createblog" element={<Createblog/>} />
           <Route path="/update-post/:blogid" element={<EditBlog/>} />
+          <Route path="/climate-guard" element={<ClimateGuard/>} />
           </Routes>
       </div>
     </Router>

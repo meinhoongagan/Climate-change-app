@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-// import './Cards.css'; 
 import CommunityCard from './Community-Card.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBlogs } from '../../redux/UserSlice.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import API_ENDPOINT from '../../config/api.js';
+import './Community.css';
 
 const Community = () => {
   const user = useSelector((state) => state.UserStates.user);
@@ -22,38 +22,42 @@ const Community = () => {
       }
     };
     fetchBlogs();
-  }, [dispatch]); // Removed 'blogs' from dependencies to prevent infinite loop
+  }, [dispatch]);
 
   return (
-    <div className='app-container'>
-      <div className='posts-container'>
-        {/* Community header */}
-        <div className='community-title'>
-          <h1>Community</h1>
-          <span>Join our community of users and share your experience with others.</span>
+    <div className="community-page">
+      <div className="posts-container">
+        <div className="community-title">
+          <h1>🌍 Community</h1>
+          <span>Share your climate journey and inspire others.</span>
         </div>
-        <div>
-          {blogs && blogs.map((blog) => (
-            <div key={blog._id}>
-              <CommunityCard
-                authorid={blog.author._id}
-                name={blog.author.name}
-                LikesCount={blog.likes.length}
-                title={blog.title}
-                description={blog.description}
-                CreationDate={blog.updatedAt}
-                blogId={blog._id}
-                comments={blog.Comments}
-                imageUrl={blog.image}
-                user={user}
-                likedUsers={blog.likes}
-              />
-            </div>
-          ))}
-        </div>
+
+        {blogs && blogs.length > 0 ? (
+          blogs.map((blog) => (
+            <CommunityCard
+              key={blog._id}
+              authorid={blog.author._id}
+              name={blog.author.name}
+              LikesCount={blog.likes.length}
+              title={blog.title}
+              description={blog.description}
+              CreationDate={blog.updatedAt}
+              blogId={blog._id}
+              comments={blog.Comments}
+              imageUrl={blog.image}
+              user={user}
+              likedUsers={blog.likes}
+            />
+          ))
+        ) : (
+          <div style={{ textAlign: 'center', color: '#94a3b8', padding: '48px 0', fontSize: '0.95rem' }}>
+            No posts yet. Be the first to share!
+          </div>
+        )}
       </div>
+
       <Link to="/createblog">
-        <div className='create-post-button'>+</div>
+        <div className="create-post-button">+</div>
       </Link>
     </div>
   );

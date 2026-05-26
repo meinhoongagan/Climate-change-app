@@ -1,63 +1,111 @@
+/* ═══════════════════════════════════════════
+   Upload / Edit Post Form — Redesigned
+   ═══════════════════════════════════════════ */
+
 .upload-form-container {
-  max-width: 500px;
+  max-width: 540px;
   margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 36px;
+  background: #ffffff;
+  box-shadow: 0 8px 40px rgba(22, 163, 74, 0.1);
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .upload-form-title {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin: 0 0 28px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #15803d, #0d9488);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .upload-form-label {
   font-weight: 600;
   display: block;
   margin-bottom: 6px;
-  color: #333;
+  font-size: 0.85rem;
+  color: #374151;
 }
 
 .upload-form-input,
-.upload-form-textarea,
-.upload-form-file {
+.upload-form-textarea {
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 16px;
-  font-size: 15px;
-  transition: border-color 0.3s;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: #1e293b;
+  background: #f8fafc;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .upload-form-input:focus,
-.upload-form-textarea:focus,
-.upload-form-file:focus {
-  border-color: #007bff;
-  outline: none;
+.upload-form-textarea:focus {
+  border-color: #16a34a;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
 }
 
 .upload-form-textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
+}
+
+.upload-form-file {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px dashed #a7f3d0;
+  margin-bottom: 18px;
+  font-size: 0.88rem;
+  color: #374151;
+  background: #f0fdf4;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-form-file:hover {
+  border-color: #16a34a;
+  background: #dcfce7;
 }
 
 .upload-form-button {
   width: 100%;
-  padding: 12px;
-  background-color: #007bff;
+  padding: 13px;
+  background: linear-gradient(135deg, #16a34a, #0d9488);
   color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.3);
+  margin-top: 4px;
 }
 
-.upload-form-button:hover {
-  background-color: #0056b3;
+.upload-form-button:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.upload-form-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .upload-form-container { padding: 28px 20px; margin: 20px 12px; border-radius: 16px; }
+  .upload-form-title { font-size: 1.4rem; }
 }

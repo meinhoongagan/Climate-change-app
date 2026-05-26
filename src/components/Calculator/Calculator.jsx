@@ -36,10 +36,12 @@ const Calculator = () => {
       reusableItemsUsed: false,
     },
   });
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [loadingMsg, setLoadingMsg] = useState('');
   const [userId,setUserId] = useState("")
   const [showPopup, setShowPopup] = useState(false);
   const [responseData, setResponseData] = useState(null);
+  const [reportError, setReportError] = useState('');
   useEffect(() => {
     const userIdFromStorage = sessionStorage.getItem('userId');
     setUserId(userIdFromStorage)
@@ -62,40 +64,68 @@ const Calculator = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSaveAndReport = async (e) => {
     e.preventDefault();
+    if (!userId) {
+      setReportError('Please log in first to generate a report.');
+      return;
+    }
+    setLoading(true);
+    setReportError('');
     try {
-      const response = await axios.post(`${API_ENDPOINT}/api/footprint/`, formData);
+      // Step 1: save footprint data
+      setLoadingMsg('Saving your footprint data...');
+      await axios.post(`${API_ENDPOINT}/api/footprint/`, formData);
+
+      // Step 2: fetch AI report (Gemini takes a few seconds)
+      setLoadingMsg('🤖 AI is analysing your data & generating report...');
+      const response = await axios.get(`${API_ENDPOINT}/api/carbon-report/${userId}`, { timeout: 60000 });
       setResponseData(response.data);
-      setShowPopup(true);  // Show the popup with response data
+      setShowPopup(true);
     } catch (error) {
-      console.error('Error saving daily footprint:', error.message);
-      alert('Error saving daily footprint');
+      console.error('Report error:', error.message);
+      setReportError(
+        error.code === 'ECONNREFUSED' || error.message.includes('Network')
+          ? 'Cannot connect to server. Make sure the backend is running on port 5001.'
+          : 'Could not generate report. Please try again in a moment.'
+      );
+    } finally {
+      setLoading(false);
+      setLoadingMsg('');
     }
   };
-  const fetchReportData = async () => {
-    try {
-      // setLoading(true)
-      const response = await axios.get(`${API_ENDPOINT}/api/carbon-report/${userId}`);
-      setResponseData(response.data);
-      // setLoading(true)
-      setShowPopup(true); // Show popup with report data
-    } catch (error) {
-      console.error('Error fetching report data:', error.message);
-      alert('Could not fetch report data');
-    }
-  };
+
   const closePopup = () => {
     setShowPopup(false);
   };
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit} className="form">
+      {/* Loading overlay */}
+      {loading && (
+        <div className="calc-loading-overlay">
+          <div className="calc-loading-box">
+            <div className="calc-spinner" />
+            <p className="calc-loading-msg">{loadingMsg || 'Loading...'}</p>
+            <p className="calc-loading-sub">This may take 10–20 seconds</p>
+          </div>
+        </div>
+      )}
+
+      {/* Error banner */}
+      {reportError && (
+        <div className="calc-error-banner">
+          ⚠️ {reportError}
+          <button className="calc-error-close" onClick={() => setReportError('')}>✕</button>
+        </div>
+      )}
+
+      <form onSubmit={handleSaveAndReport} className="form">
+        <h1 className="form-title">Carbon Footprint Calculator</h1>
+
         {/* Transportation */}
-      <h1 className="form-title">Carbon Footprint Calculator</h1>
         <div className="form-section">
-          <h3 className="form-subtitle">Transportation</h3>
+          <h3 className="form-subtitle">🚗 Transportation</h3>
           <label htmlFor="mode" className="form-label">Mode</label>
           <select
             id="mode"
@@ -135,7 +165,7 @@ const Calculator = () => {
 
         {/* Energy Usage */}
         <div className="form-section">
-          <h3 className="form-subtitle">Energy Usage</h3>
+          <h3 className="form-subtitle">⚡ Energy Usage</h3>
           <label htmlFor="appliances" className="form-label">Appliances Usage (hours)</label>
           <p className='form-subtitle-description'>Enter the number of hours spent on appliances</p>
           <input
@@ -167,7 +197,7 @@ const Calculator = () => {
 
         {/* Food Consumption */}
         <div className="form-section">
-          <h3 className="form-subtitle">Food Consumption</h3>
+          <h3 className="form-subtitle">🥗 Food Consumption</h3>
           <label htmlFor="meals" className="form-label">Meals (type of meals)</label>
           <select
             id="meals"
@@ -207,7 +237,7 @@ const Calculator = () => {
 
         {/* Waste Management */}
         <div className="form-section">
-          <h3 className="form-subtitle">Waste Management</h3>
+          <h3 className="form-subtitle">♻️ Waste Management</h3>
           <label htmlFor="recyclables" className="form-label">Recyclables (items)</label>
           <input
             id="recyclables"
@@ -232,7 +262,7 @@ const Calculator = () => {
 
         {/* Water Usage */}
         <div className="form-section">
-          <h3 className="form-subtitle">Water Usage</h3>
+          <h3 className="form-subtitle">💧 Water Usage</h3>
           <label htmlFor="numberOfShowers" className="form-label">Number of Showers taken</label>
           <input
             id="numberOfShowers"
@@ -266,7 +296,7 @@ const Calculator = () => {
 
         {/* Purchases */}
         <div className="form-section">
-          <h3 className="form-subtitle">Purchases</h3>
+          <h3 className="form-subtitle">🛍️ Purchases</h3>
           <label htmlFor="newItems" className="form-label">New Items Purchased</label>
           <input
             id="newItems"
@@ -286,9 +316,11 @@ const Calculator = () => {
           />
         </div>
 
-        <button type="submit" className="submit-button-calculator" onClick={fetchReportData}>Save and Get Report</button>
+        <button type="submit" className="submit-button-calculator" disabled={loading}>
+          {loading ? 'Generating...' : 'Save & Get AI Report'}
+        </button>
       </form>
-      {showPopup && (
+      {showPopup && responseData?.report && (
         <Popup data={responseData.report} onClose={closePopup} />
       )}
     </div>

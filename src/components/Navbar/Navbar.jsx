@@ -74,6 +74,7 @@ const Navbar = () => {
         <li><Link to="/resources" onClick={() => isMobile && setMenuOpen(false)}>Resources</Link></li>
         <li><Link to="/cart" onClick={() => isMobile && setMenuOpen(false)}>Eco Basket</Link></li>
         <li><Link to="/simulator" onClick={() => isMobile && setMenuOpen(false)}>Simulator</Link></li>
+        <li><Link to="/climate-guard" onClick={() => isMobile && setMenuOpen(false)}>🛡️ ClimateGuard</Link></li>
         {isLogedIn && <li><Link to="/community" onClick={() => isMobile && setMenuOpen(false)}>Community</Link></li>}
       </ul>
 
